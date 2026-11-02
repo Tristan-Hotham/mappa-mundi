@@ -1,0 +1,165 @@
+index_no,name,pages,part,class,region,x_miller,y_miller,x_photo,y_photo,pos_conf,identification,evidence,lat,lon,map_frac,map_brg,true_km,true_brg,brg_err,imp_lat,imp_lon,disp_km
+31,Alexandria,88,Asia,Classical,Egypt and Sinai,2610.0,2690.0,2617.0,2549.0,high,Alexandria,"Alexandria, with a figure of the Pharos (p. 88)",31.2,29.92,0.473,192.315,507.937,264.142,-71.827,26.378,26.297,641.204
+32,Alexandria,36,Asia,Classical,India and Central Asia,1570.0,1440.0,1565.0,1228.0,medium,Alexandria in the Caucasus (Bagram),"Alexandria, founded by Alexander, in the country of the Cadrusi (p. 36)",35.0,69.27,0.745,73.229,3164.955,74.155,-0.926,40.316,56.577,1275.882
+49,Antiochia,68,Asia,Classical,Syria and Anatolia,1340.0,2425.0,1342.0,2282.0,medium,Antioch in Pisidia,probably Antioch in Pisidia (p. 68),38.31,31.19,0.372,11.113,814.216,334.264,36.849,48.349,34.539,1148.99
+50,Antiochia,76,Asia,Classical,Syria and Anatolia,1450.0,2210.0,1451.0,2051.0,high,Antioch of Syria (Antakya),Antioch of Syria (p. 76),36.2,36.16,0.361,35.838,499.187,9.586,26.252,45.863,39.546,1109.978
+53,Apollonia,92,Africa,Classical,North Africa,3040.0,2820.0,3050.0,2682.0,high,"Apollonia (Susa, Libya)","Apollonia, of the Pentapolis (p. 92)",32.9,21.97,0.765,194.036,1251.592,279.257,-85.221,18.892,23.404,1568.448
+73,Arbor Sicca,25,Asia,Legendary,,2005.0,1065.0,1999.0,823.0,medium,,the dry tree (p. 25 to 27),,,0.96,94.086,,,,,,
+74,Area Noe,69,Asia,Biblical,Mesopotamia and Persia,1290.0,2030.0,1289.0,1861.0,high,the mountains of Armenia (Ararat),Archa Noe sedit in montibus Armenie (p. 69),39.7,44.3,0.516,39.62,1201.037,40.308,-0.688,47.982,44.893,924.027
+79,Aree Alexandri,28,Asia,Classical,,2160.0,1170.0,2155.0,933.0,high,,the twelve altars set up by Alexander (p. 28); no site given,,,0.905,100.784,,,,,,
+80,Aree Philenoram,92,Africa,Classical,North Africa,2950.0,2905.0,2960.0,2774.0,high,the Altars of the Philaeni,Arae Philaenorum (p. 92),30.3,18.98,0.725,199.411,1555.847,268.2,-68.788,20.519,21.895,1133.561
+81,Arelas,148,Europe,Classical,France,1920.0,3690.0,1933.0,3624.0,high,Arles,Arelas (p. 148),43.68,4.63,0.752,269.008,2976.202,305.156,-36.148,37.47,4.709,713.24
+86,Arhmata,172,British Isles,Medieval,British Isles,870.0,3745.0,880.0,3696.0,high,Armagh,"Armagh, the city of St Patrick (p. 172)",54.35,-6.65,1.035,310.406,4133.68,319.912,-9.506,54.484,-3.874,183.417
+88,Arimmuin,130,Europe,Classical,Italy,1630.0,3365.0,1639.0,3281.0,medium,Rimini,"Ariminum (Rimini), which should have been placed on the sea coast (p. 130)",44.06,12.57,0.568,288.02,2399.112,311.148,-23.128,43.233,11.045,156.499
+94,Arsinoe,92,Africa,Classical,North Africa,3280.0,2820.0,3290.0,2679.0,high,"Arsinoe (Tocra, Teuchira)","Teuchira, which is used by Isidore in lieu of Arsinoe (p. 92)",32.53,20.58,0.918,191.669,1381.034,277.37,-85.702,14.661,23.178,2012.17
+95,Ascalon,78,Asia,Biblical,Holy Land,2005.0,2720.0,2011.0,2588.0,high,Ashkelon,Ascalon (p. 78),31.67,34.57,0.139,240.422,63.96,259.485,-19.062,37.069,26.282,968.785
+103,Athene,134,Europe,Classical,Greece and Constantinople,1640.0,2940.0,1646.0,2827.0,medium,Athens,Athene (p. 134),37.98,23.73,0.313,302.699,1254.302,306.516,-3.817,43.553,21.282,654.386
+109,Augustudunum,145,Europe,Classical,France,1690.0,3600.0,1701.0,3531.0,medium,Autun,"Augustodunum, Autun (p. 145)",46.95,4.3,0.707,281.155,3118.278,311.72,-30.565,41.614,5.764,621.558
+112,Aurelianum,146,Europe,Classical,France,1635.0,3655.0,1647.0,3590.0,medium,Orleans,"on the Loire, Aurelianum, Orleans (p. 146)",47.9,1.9,0.749,283.312,3324.702,312.347,-29.036,42.366,4.231,660.351
+118,Avalerion,30,Asia,Legendary,,1800.0,1300.0,1795.0,1076.0,high,,"the alerion, of which there is only one pair in the world (p. 30)",,,0.807,85.371,,,,,,
+121,Avernis,147,Europe,Classical,France,1610.0,3700.0,1622.0,3638.0,high,Clermont-Ferrand,"probably Clermont, which was known as Arverna (p. 147)",45.78,3.08,0.782,283.978,3162.015,308.789,-24.811,42.631,3.055,363.374
+123,Babel Tttkris,74,Asia,Biblical,Mesopotamia and Persia,1880.0,1800.0,1879.0,1608.0,high,Babylon (the Tower of Babel),"a tower, the Tower of Babel (Gen. xi. 5, 9) (p. 74)",32.54,44.42,0.479,88.441,868.561,81.958,6.484,36.938,46.763,534.312
+124,Babylonia,74,Asia,Biblical,,1960.0,1600.0,1958.0,1394.0,medium,Babylon,Babilonia a Nembroth gigante fundata (p. 74),32.54,44.42,0.61,93.672,,,,,,
+125,Babylonia,86,Asia,Classical,Egypt and Sinai,2930.0,2165.0,2935.0,1985.0,high,Cairo,"Babilonia, the city of Cairo (p. 86)",30.01,31.23,0.713,160.241,429.601,243.83,-83.59,19.857,35.685,1211.891
+133,Basella,126,Europe,Medieval,Spain,1790.0,4020.0,1805.0,3978.0,high,Seville,probably intended for Seville (p. 126),37.39,-5.98,0.97,274.236,3793.951,291.05,-16.814,38.403,-3.12,277.891
+136,Bathe,170,British Isles,Medieval,British Isles,1072.0,3758.0,1083.0,3707.0,medium,Bath,"Bath, an episcopal see at the period of the map (p. 170)",51.38,-2.36,0.962,304.099,3748.363,316.678,-12.579,51.201,-2.186,23.833
+137,Bayona,148,Europe,Medieval,France,1340.0,3840.0,1352.0,3791.0,high,Bayonne,Bayonne (p. 148),43.49,-1.47,0.925,293.225,3450.443,302.736,-9.511,46.495,-2.014,352.48
+141,Bencur,172,British Isles,Medieval,British Isles,760.0,3690.0,769.0,3638.0,medium,"Bangor, County Down","Bangor, another ecclesiastical town of note (p. 172)",54.66,-5.67,1.057,314.626,4086.768,320.73,-6.104,56.519,-3.57,262.828
+143,Berenice,92,Africa,Classical,North Africa,2830.0,2850.0,2839.0,2717.0,high,Benghazi (Berenice),"Berenice, one of the towns of the Pentapolis (p. 92)",32.12,20.07,0.639,198.712,1430.127,275.548,-76.837,22.61,23.012,1101.841
+144,Berenice,84,Asia,Classical,Egypt and Sinai,2770.0,1715.0,2771.0,1507.0,medium,Berenice on the Red Sea,"Berenice, the well-known port on the Red Sea (p. 84)",23.91,35.47,0.778,136.695,875.043,178.427,-41.733,21.298,44.484,973.402
+145,Beritus,76,Asia,Classical,Syria and Anatolia,1610.0,2610.0,1614.0,2476.0,high,Beirut,Beritus (p. 76),33.89,35.5,0.195,345.5,236.294,5.954,-20.455,43.917,29.283,1236.009
+146,Bersabee,80,Asia,Biblical,Holy Land,2190.0,2350.0,2194.0,2191.0,high,Beersheba,Bersabee (p. 80),31.25,34.79,0.224,147.465,72.149,215.85,-68.385,33.276,33.91,239.44
+147,Berwic,171,British Isles,Medieval,British Isles,725.0,3475.0,733.0,3409.0,high,Berwick-upon-Tweed,"Berwic, an important fortress in the period of the Scottish wars (p. 171)",55.77,-2.0,0.98,321.34,3925.379,323.915,-2.575,58.142,2.512,403.756
+149,Bethleem,79,Asia,Biblical,Holy Land,1950.0,2610.0,1955.0,2472.0,high,Bethlehem,Bethleem (p. 79),31.7,35.2,0.059,236.31,9.131,200.943,35.367,37.93,28.78,906.48
+156,Blemee,103,Africa,Legendary,,3300.0,3150.0,3313.0,3031.0,medium,,the Blemyae (p. 103),,,0.996,203.715,,,,,,
+163,Bononia,130,Europe,Classical,Italy,1720.0,3380.0,1730.0,3296.0,high,Bologna,Bononia (p. 130),44.49,11.34,0.563,282.025,2508.081,311.122,-29.097,41.656,10.983,323.415
+169,Braga,152,Europe,Classical,Central Europe,720.0,2985.0,724.0,2887.0,high,Prague,"Braga metropolis Boemariorum, Prague (p. 151)",50.08,14.42,0.822,339.125,2664.627,325.845,13.28,59.603,18.355,1114.171
+173,Brema,152,Europe,Medieval,Central Europe,650.0,3290.0,656.0,3213.0,high,Bremen,Brema (p. 152),53.08,8.8,0.951,328.868,3176.249,325.995,2.873,60.105,7.737,804.061
+179,Bucephala,28,Asia,Classical,India and Central Asia,2010.0,1210.0,2005.0,977.0,medium,Bucephala on the Hydaspes (Jhelum),two towns founded by Alexander near the river Hydaspes (p. 28),32.93,73.73,0.866,94.746,3598.077,77.461,17.284,31.768,58.006,1486.48
+183,Burdegala,147,Europe,Classical,France,1330.0,3800.0,1342.0,3749.0,medium,Bordeaux,"Bordeaux, represented in a style proportioned to its importance (p. 147)",44.84,-0.58,0.903,294.256,3410.063,305.561,-11.305,46.84,-1.113,235.618
+189,Cadan,170,British Isles,Medieval,British Isles,1150.0,3795.0,1161.0,3745.0,high,Caen (misplaced in England),"Caen, which has been, by a strange blunder, transferred from the southern to the northern side of the channel (p. 170)",49.18,-0.37,0.955,300.763,3530.618,313.682,-12.919,49.768,-2.447,164.158
+193,Calcidonia,69,Asia,Classical,Greece and Constantinople,1300.0,2660.0,1303.0,2533.0,medium,Chalcedon (Kadikoy),"Calcidonia (Chalcedon), in Bithynia (p. 69)",40.99,29.03,0.399,348.232,1164.552,333.333,14.898,49.427,28.452,939.94
+200,Calpel,99,Africa,Classical,Spain,2040.0,4065.0,2056.0,4022.0,high,Gibraltar (Calpe),Calpe or Gibraltar (p. 99),36.14,-5.35,1.0,264.772,3747.253,288.754,-23.982,34.149,-2.725,335.998
+215,Canturia,170,British Isles,Medieval,British Isles,1145.0,3738.0,1156.0,3685.0,medium,Canterbury,Canterbury (p. 170),51.28,1.08,0.925,302.112,3523.695,318.047,-15.935,50.121,-1.02,205.131
+222,Carax,72,Asia,Classical,Mesopotamia and Persia,2490.0,1540.0,2489.0,1323.0,high,Charax Spasinou,"Pliny's description, Charax oppidum Persici sinus intimum (p. 72)",30.94,47.66,0.753,120.666,1182.848,91.249,29.418,25.411,48.916,628.271
+226,Caribdis,116,Seas and islands,Legendary,,2045.0,3490.0,2057.0,3409.0,high,,"Charybdis, the whirlpool (p. 116)",,,0.629,261.367,,,,,,
+227,Carimaspi,61,Asia,Legendary,,330.0,2040.0,326.0,1883.0,medium,,the Arimaspi fighting griffins for emeralds (p. 61),,,1.072,17.499,,,,,,
+229,Carlua,169,British Isles,Medieval,British Isles,820.0,3490.0,828.0,3424.0,high,Carlisle,Carlisle; the form of the name is peculiar (p. 169),54.89,-2.93,0.939,318.515,3935.34,322.147,-3.632,56.519,2.982,431.058
+231,Carmelum,78,Asia,Biblical,Holy Land,1735.0,2600.0,1739.0,2463.0,medium,Mount Carmel,mons Carmelus (p. 78),32.73,35.05,0.115,338.499,107.413,350.754,-12.255,41.704,29.328,1117.289
+233,Carnarvan,171,British Isles,Medieval,British Isles,860.0,3570.0,869.0,3509.0,high,Caernarfon,Carnarvan (p. 171),53.14,-4.27,0.955,315.138,3939.854,318.836,-3.697,55.516,1.004,455.003
+234,Carnotum,146,Europe,Classical,France,1520.0,3650.0,1531.0,3586.0,high,Chartres,"Carnutum, Chartres (p. 146)",48.45,1.49,0.767,288.819,3374.703,313.181,-24.362,44.306,3.749,505.326
+237,Cartago,95,Africa,Classical,North Africa,2420.0,3320.0,2431.0,3223.0,high,Carthage,"Cartago Magna, pictorially represented by an edifice of imposing dimensions (p. 95)",36.86,10.33,0.613,236.479,2348.606,290.77,-54.291,29.65,13.727,874.855
+238,Caspia,52,Asia,Classical,,1010.0,1555.0,1005.0,1358.0,high,,Caspia civitas: not identified by the book,,,0.862,47.755,,,,,,
+239,Caspie Portee,64,Asia,Classical,Mesopotamia and Persia,850.0,2040.0,848.0,1877.0,high,the Caspian Gates,"the Caspian Gates, entered by a road eight miles long (p. 64)",35.47,52.6,0.756,25.241,1657.047,70.944,-45.703,55.507,47.931,2281.31
+241,Cassica,30,Asia,Classical,India and Central Asia,1620.0,1340.0,1615.0,1121.0,medium,Capissa (Kapisa),"no doubt Capissa, which Pliny says was destroyed by Cyrus (p. 30)",35.0,69.25,0.799,76.813,3163.136,74.157,2.656,38.9,58.302,1073.122
+245,Castello Novo,169,British Isles,Medieval,British Isles,825.0,3435.0,833.0,3365.0,medium,Newcastle upon Tyne,"Castello Novo, Newcastle-on-Tyne (p. 169)",54.97,-1.61,0.913,320.064,3863.23,322.845,-2.782,56.658,4.68,455.131
+254,Celdara,172,British Isles,Medieval,British Isles,980.0,3850.0,991.0,3806.0,high,Kildare,"Kildare, the city of St Bridget (p. 172)",53.16,-6.91,1.045,304.977,4106.332,317.963,-12.985,52.176,-5.528,146.813
+256,Cenomani,146,Europe,Classical,France,1440.0,3655.0,1451.0,3593.0,high,Le Mans,"Cenomani, Le Mans (p. 146)",48.0,0.2,0.788,292.329,3447.734,311.782,-19.453,45.62,3.171,352.719
+259,Cesarea,99,Africa,Classical,North Africa,2440.0,3710.0,2454.0,3639.0,medium,Caesarea in Mauretania (Cherchell),Cesarea (p. 99),36.61,2.19,0.842,245.318,3070.881,289.224,-43.906,28.614,5.939,985.751
+260,Cesarea Philippi,78,Asia,Biblical,Holy Land,1740.0,2370.0,1743.0,2218.0,high,Caesarea Philippi (Banias),Cesarea Philippi (p. 78),33.25,35.69,0.15,45.881,169.299,14.49,31.391,41.218,34.672,888.932
+262,Cestria,169,British Isles,Medieval,British Isles,905.0,3550.0,914.0,3487.0,high,Chester,Chester (p. 169),53.19,-2.89,0.926,314.43,3856.591,319.454,-5.024,54.87,2.005,386.967
+274,Cinocephales,159,Europe,Legendary,,420.0,2590.0,420.0,2469.0,high,,the dog-headed race (p. 159),,,0.964,357.872,,,,,,
+277,Cirene,92,Africa,Classical,North Africa,2310.0,2800.0,2317.0,2670.0,high,Cyrene (Shahhat),Cirene (p. 92),32.82,21.86,0.318,212.876,1261.566,278.834,-65.957,31.747,24.347,263.062
+289,Colcestria,168,British Isles,Medieval,British Isles,1100.0,3595.0,1110.0,3533.0,high,Colchester,Colchester (p. 168),51.89,0.9,0.865,307.042,3563.663,319.005,-11.962,51.478,2.391,112.844
+294,Compostella,125,Europe,Medieval,Spain,1395.0,3895.0,1408.0,3849.0,high,Santiago de Compostela,Compostella ... a place of pilgrimage (p. 125),42.88,-8.54,0.945,290.371,4012.446,300.602,-10.23,45.351,-2.92,539.681
+297,Constantinopolis,136,Europe,Classical,Greece and Constantinople,1150.0,2815.0,1154.0,2700.0,high,Istanbul (Constantinople),Constantinopolis (p. 136),41.01,28.98,0.521,339.528,1168.595,333.21,6.317,52.158,24.291,1290.176
+300,Corduba,126,Europe,Classical,Spain,1980.0,4110.0,1996.0,4071.0,high,Cordoba,"Cordova, which succeeded Carthagena as a metropolitan see (p. 126)",37.88,-4.78,1.027,267.092,3686.118,291.863,-24.771,34.934,-3.966,353.75
+304,Cottonare,27,Asia,Classical,India and Central Asia,2310.0,1020.0,2304.0,771.0,medium,Kochi (Cochin),"Cottonara of Pliny and Solinus, now probably Cochin (p. 27)",9.97,76.27,1.022,105.143,4861.425,110.677,-5.534,25.753,59.628,2485.382
+314,Cunwey,171,British Isles,Medieval,British Isles,880.0,3630.0,889.0,3573.0,high,Conwy,"Cunwey, Conway (p. 171)",53.28,-3.83,0.974,312.969,3918.279,319.227,-6.258,54.912,-0.525,297.167
+323,Damascus,77,Asia,Biblical,Holy Land,2060.0,2080.0,2061.0,1905.0,high,Damascus,Damascus (p. 77),33.51,36.29,0.314,109.374,216.591,26.864,82.51,34.853,39.993,372.463
+344,Divelin,172,British Isles,Medieval,British Isles,780.0,3625.0,789.0,3569.0,medium,Dublin,Dublin (p. 172),53.35,-6.26,1.018,315.778,4072.189,318.472,-2.695,56.544,-1.436,500.589
+353,Durem,169,British Isles,Medieval,British Isles,860.0,3510.0,868.0,3445.0,high,Durham,"Durham, with its cathedral church appropriately placed on a hill (p. 169)",54.78,-1.57,0.928,316.848,3851.525,322.564,-5.717,55.778,2.758,307.708
+356,Eboracum,169,British Isles,Medieval,British Isles,882.0,3460.0,890.0,3391.0,high,York,"Eboracum, York (p. 169)",53.96,-1.08,0.896,317.74,3782.892,321.481,-3.741,55.616,4.423,415.572
+359,Ebron,80,Asia,Biblical,Holy Land,2060.0,2400.0,2064.0,2246.0,medium,Hebron,Hebron (p. 80),31.53,35.1,0.136,139.844,30.242,204.931,-65.087,35.662,33.165,492.166
+362,Edenburgh,171,British Isles,Medieval,British Isles,780.0,3455.0,788.0,3387.0,medium,Edinburgh,Edenburgh (p. 171),55.95,-3.19,0.944,320.599,4000.761,323.679,-3.08,57.323,3.666,464.754
+370,Ely,168,British Isles,Medieval,British Isles,1020.0,3570.0,1029.0,3507.0,high,Ely,"Ely, represented as on an island in the Nen (p. 168)",52.4,0.26,0.885,310.373,3627.407,319.552,-9.179,52.898,2.434,161.902
+373,Enos,27,Asia,Biblical,,1930.0,1110.0,1924.0,872.0,high,,Enos civitas antiquissima (Gen. iv. 17),,,0.928,91.206,,,,,,
+376,Ephesus,68,Asia,Classical,Syria and Anatolia,1460.0,2505.0,1463.0,2366.0,high,Ephesus,"Ephesus, on a nameless river, perhaps the Cayster (p. 68)",37.94,27.34,0.287,3.9,993.495,315.777,48.124,46.4,32.165,1023.938
+396,Excestria,170,British Isles,Medieval,British Isles,1180.0,3830.0,1192.0,3782.0,medium,Exeter,"Exeter, an episcopal see (p. 170)",50.72,-3.53,0.965,299.073,3800.535,315.12,-16.047,49.115,-3.075,190.069
+400,Fareie,162,Europe,Medieval,Iceland and Norway,450.0,2970.0,453.0,2874.0,high,the Faroe Islands,"the Faroes, discovered by the Normans in 861 (p. 162)",62.0,-6.9,0.986,343.301,4498.239,330.96,12.341,64.311,17.734,1324.6
+418,Fortunate,106,Africa,Legendary,,2400.0,4100.0,2417.0,4055.0,medium,,Fortunate Insule: sex sunt: insule Sancti Brandani (p. 106),,,1.07,252.282,,,,,,
+424,Gades,112,Seas and islands,Classical,Spain,2045.0,4030.0,2061.0,3985.0,high,Cadiz,the town of Cadiz (p. 112),36.53,-6.29,0.978,264.46,3827.75,289.555,-25.095,34.208,-1.976,479.579
+436,Ganzmir,158,Europe,Legendary,,300.0,2810.0,302.0,2705.0,high,,Ganzmir: its meaning we cannot divine (p. 158),,,1.057,350.248,,,,,,
+441,Gaza,79,Asia,Biblical,Holy Land,2075.0,2590.0,2080.0,2449.0,high,Gaza,"Cuja, Gaza ... (p. 79)",31.5,34.47,0.119,197.447,78.642,247.17,-49.722,35.703,29.035,686.631
+450,Genua,131,Europe,Classical,Italy,1645.0,3540.0,1656.0,3467.0,medium,Genoa,Genoa (p. 131),44.41,8.93,0.675,284.237,2678.653,309.144,-24.907,42.548,6.964,268.229
+451,Gerara,79,Asia,Biblical,Holy Land,2180.0,2570.0,2185.0,2426.0,high,Gerar,probably Gerar (Gen. xx. 1) (p. 79),31.38,34.6,0.184,187.125,74.555,233.892,-46.767,33.827,29.302,566.445
+458,Gigantes,27,Asia,Legendary,,2110.0,1050.0,2104.0,805.0,high,,the giants (Gen. vi. 4),,,0.977,98.049,,,,,,
+460,Glearum,169,British Isles,Medieval,British Isles,1055.0,3760.0,1066.0,3709.0,medium,Gloucester,evidently intended for Gloucester (p. 170),51.86,-2.24,0.969,304.598,3759.993,317.531,-12.934,51.464,-2.396,48.085
+461,Glestonia,170,British Isles,Medieval,British Isles,1085.0,3790.0,1096.0,3741.0,medium,Glastonbury,"Glastonbury, the seat of the most famous monastery in Britain (p. 170)",51.15,-2.71,0.974,303.0,3762.215,316.152,-13.153,50.834,-2.904,40.013
+466,Griphe,61,Asia,Legendary,,520.0,2595.0,521.0,2473.0,high,,the griffins (p. 61),,,0.899,357.51,,,,,,
+479,Hreford,169,British Isles,Medieval,British Isles,1010.0,3760.0,1021.0,3710.0,high,Hereford,Hereford (p. 169),52.06,-2.72,0.986,306.0,3798.749,317.67,-11.671,52.183,-2.827,15.938
+493,Hur,74,Asia,Biblical,Mesopotamia and Persia,2260.0,1600.0,2259.0,1390.0,high,Ur of the Chaldees,"Hur, Abraham's country in Chaldea (p. 74)",30.96,46.1,0.652,111.058,1035.151,92.182,18.876,29.592,48.873,307.014
+498,Iacobi Templum,125,Europe,Medieval,,1450.0,3920.0,1463.0,3875.0,high,Santiago de Compostela (the shrine of St James),"the temple of St James, one of the most frequented places of pilgrimage (p. 125)",42.88,-8.54,0.948,287.999,,,,,,
+500,Ilerda,126,Europe,Classical,Spain,1755.0,3920.0,1769.0,3871.0,high,Lleida (Lerida),"may possibly be Ilerda, Lerida (p. 126)",41.62,0.62,0.907,275.977,3248.632,299.539,-23.562,39.397,-1.134,299.101
+509,Ippone,97,Africa,Classical,North Africa,2470.0,3540.0,2483.0,3457.0,high,Hippo Regius (Annaba),"Hippone, the one always used in the Itinerary; Augustine's see (p. 97)",36.88,7.75,0.752,240.44,2577.24,290.292,-49.852,28.458,9.387,971.143
+512,Jerico,80,Asia,Biblical,Holy Land,2270.0,2195.0,2273.0,2025.0,medium,Jericho,Jerico (p. 80),31.86,35.46,0.327,137.42,23.233,66.445,70.975,31.511,36.896,141.517
+513,Jerusalem,79,Asia,Biblical,,1900.0,2535.0,1904.0,2392.0,high,Jerusalem,"the city of Jerusalem, placed as the centre of the world (p. 79)",31.78,35.23,0.0,180.0,,,,,,
+519,Kircham,169,British Isles,Medieval,British Isles,898.0,3435.0,906.0,3365.0,medium,Kirkham Priory,"a priory of no great fame ... on the Derwent, six miles below Malton (p. 169)",54.08,-0.88,0.877,318.07,3777.018,321.767,-3.697,55.445,5.29,440.119
+520,Laborintus,116,Seas and islands,Legendary,,2215.0,3245.0,2225.0,3146.0,high,,the Labyrinth of Daedalus (p. 116),,,0.506,246.075,,,,,,
+525,Laodiciam,76,Asia,Classical,Syria and Anatolia,1615.0,2345.0,1617.0,2193.0,high,Latakia (Laodicea of Syria),"Laodicea of Syria, on the sea coast (p. 76)",35.52,35.78,0.223,33.69,419.285,6.767,26.923,43.351,35.641,869.566
+542,Leptis Magna,93,Africa,Classical,North Africa,2870.0,2960.0,2880.0,2834.0,high,Leptis Magna,Leptis Magna (p. 93),32.64,14.29,0.69,203.66,1969.691,278.385,-74.724,21.942,20.905,1370.472
+558,Limogena,147,Europe,Classical,France,1675.0,3725.0,1687.0,3664.0,high,Limoges,either Limoges ... or else Limagne (p. 147),45.83,1.26,0.789,280.707,3298.408,308.114,-27.407,41.46,2.817,518.331
+559,Lincoln,168,British Isles,Medieval,British Isles,990.0,3540.0,999.0,3475.0,high,Lincoln,"Lincoln, with its cathedral duly depicted on an elevation (p. 168 to 169)",53.23,-0.54,0.883,312.16,3715.586,320.547,-8.387,53.514,3.023,243.759
+567,Londonia,168,British Isles,Medieval,British Isles,1080.0,3655.0,1090.0,3597.0,high,London,"London, represented by a castellated structure of fair proportions (p. 168)",51.51,-0.13,0.904,306.209,3610.761,317.861,-11.652,51.552,0.62,52.929
+570,Loth uxor,77,Asia,Biblical,,2240.0,1990.0,2241.0,1807.0,high,,Lot's wife turned to a pillar of salt (Gen. xix. 26) (p. 77),,,0.418,121.958,,,,,,
+584,Magog,49;58,Asia,Legendary,,430.0,1700.0,424.0,1519.0,medium,,the land of Gog and Magog (p. 49),,,1.101,29.598,,,,,,
+592,Man,172,British Isles,Medieval,British Isles,795.0,3530.0,803.0,3467.0,high,the Isle of Man,Man (p. 172),54.23,-4.53,0.968,317.998,4000.549,320.474,-2.475,56.755,1.544,500.429
+594,Mandragora,87,Asia,Frame,,2700.0,2400.0,2706.0,2238.0,high,,the mandrake (p. 87),,,0.528,170.422,,,,,,
+621,Messana,116,Seas and islands,Classical,Italy,2125.0,3480.0,2137.0,3397.0,high,Messina,Messana (p. 116),38.19,15.55,0.633,256.608,1925.055,297.17,-40.563,34.5,9.884,659.275
+652,Narbona,143;148,Europe,Classical,France,1840.0,3700.0,1853.0,3636.0,high,Narbonne,Narbona (p. 143),43.18,3.0,0.76,272.948,3089.384,303.445,-30.496,38.784,4.158,514.241
+655,Nazaret,78,Asia,Biblical,Holy Land,1820.0,2310.0,1822.0,2153.0,high,Nazareth,Nazaret (p. 78),32.7,35.3,0.155,70.427,102.851,3.416,67.01,39.678,35.803,775.626
+656,Neapolis,131,Europe,Classical,Italy,2005.0,3240.0,2015.0,3143.0,high,Naples,Naples (p. 131),40.85,14.27,0.464,261.529,2124.395,304.22,-42.691,36.956,14.819,441.265
+663,Nicea,28,Asia,Classical,India and Central Asia,1880.0,1215.0,1875.0,984.0,medium,Nicaea on the Hydaspes (Jhelum),two towns founded by Alexander near the river Hydaspes (p. 28),32.95,73.65,0.86,89.132,3590.363,77.443,11.689,33.917,58.837,1380.524
+665,Nicomedia,69,Asia,Classical,Greece and Constantinople,1310.0,2680.0,1314.0,2554.0,medium,Nicomedia (Izmit),"Nicomedia, in Bithynia (p. 69)",40.77,29.92,0.396,346.192,1107.122,336.065,10.128,49.271,27.908,958.301
+669,Ninevee,73,Asia,Biblical,Mesopotamia and Persia,1540.0,1750.0,1537.0,1559.0,high,Nineveh (Mosul),civitas Ninive (p. 73),36.36,43.15,0.562,65.364,889.035,52.875,12.489,42.483,49.929,895.722
+671,Nisibi,74,Asia,Classical,Mesopotamia and Persia,1760.0,1880.0,1759.0,1695.0,high,Nisibis (Nusaybin),"Nisibis, placed incorrectly on the Euphrates (p. 74)",37.07,41.22,0.436,77.935,804.512,41.349,36.586,39.323,45.674,463.411
+673,Noreya,158,Europe,Classical,Iceland and Norway,420.0,2840.0,422.0,2736.0,high,Norway,"Norway alone is named, under the form Noreya (p. 158)",61.0,9.0,0.984,348.355,3766.563,337.387,10.968,64.953,22.675,868.369
+674,Norhanton,168,British Isles,Medieval,British Isles,1008.0,3605.0,1017.0,3544.0,medium,Northampton,Northampton (p. 168),52.24,-0.9,0.907,309.816,3691.753,318.742,-8.926,52.947,1.366,178.746
+693,Orcades,161,Europe,Classical,British Isles,420.0,3120.0,424.0,3034.0,high,Orkney,the Orkneys (p. 161),59.0,-3.0,1.036,338.433,4149.316,328.277,10.155,64.515,11.78,1056.848
+696,Orrea Josepbi,86,Asia,Biblical,Egypt and Sinai,2560.0,2310.0,2565.0,2144.0,high,the Pyramids of Giza,"the granaries of Joseph, as the Pyramids used to be called in the Middle Ages (p. 86)",29.98,31.13,0.454,161.175,439.666,244.042,-82.866,26.687,33.829,451.123
+704,Oxeford,168,British Isles,Medieval,British Isles,1030.0,3662.0,1040.0,3605.0,high,Oxford,"Oxford, in the 13th century the seat of a university (p. 168)",51.75,-1.26,0.927,307.667,3692.971,317.761,-10.094,52.335,-0.0,112.929
+720,Paradisi porte,25,Asia,Legendary,,1880.0,1000.0,1873.0,755.0,high,,"Terrestrial Paradise, an island surrounded by a wall with flames (p. 25)",,,1.0,89.254,,,,,,
+723,Parisius,145,Europe,Classical,France,1420.0,3545.0,1430.0,3475.0,high,Paris,Paris (p. 145),48.86,2.35,0.728,295.419,3332.826,314.357,-18.938,46.33,5.76,383.554
+729,Patalus,28,Asia,Classical,India and Central Asia,2390.0,1040.0,2385.0,791.0,medium,the Indus delta (Patale),"clearly Patale of Pliny, the district between Cutch and Kurrachee (p. 28)",24.75,67.9,1.024,108.147,3279.889,95.442,12.705,24.561,58.767,929.761
+745,Persepolis,72,Asia,Classical,Mesopotamia and Persia,2070.0,1460.0,2067.0,1243.0,high,Persepolis,Persepolis caput Persidis (p. 72),29.93,52.89,0.709,98.986,1695.935,92.337,6.649,32.139,52.685,248.441
+749,Petra,77,Asia,Classical,Holy Land,2290.0,1830.0,2290.0,1635.0,medium,Petra,the city of Petra (p. 77),30.33,35.44,0.525,118.951,162.052,173.009,-54.058,30.014,44.188,843.25
+752,Phenix,85,Asia,Legendary,,2620.0,1900.0,2622.0,1706.0,high,,the phoenix (p. 85),,,0.625,138.589,,,,,,
+761,Pigmei,28,Asia,Legendary,,1730.0,1155.0,1724.0,922.0,high,,the pygmies (p. 28),,,0.905,82.977,,,,,,
+770,Polibrota,32,Asia,Classical,India and Central Asia,2470.0,1250.0,2467.0,1014.0,high,Patna (Palimbothra),Palimbothra ... answers to the city of Patna (p. 32),25.61,85.14,0.915,113.921,4874.149,84.896,29.025,24.375,54.442,3116.818
+777,Ptholomaida,92,Africa,Classical,North Africa,3220.0,2820.0,3230.0,2680.0,high,Ptolemais (Tolmeita),"Ptolemais, of the Pentapolis (p. 92)",32.71,20.95,0.879,192.184,1346.4,278.219,-86.036,15.719,23.237,1910.184
+780,Puteolis,131,Europe,Classical,Italy,2010.0,3260.0,2020.0,3164.0,high,Pozzuoli,Pozzuoli (p. 131),40.82,14.12,0.477,261.373,2134.911,304.008,-42.636,36.844,14.389,448.92
+781,Rages,71,Asia,Classical,Mesopotamia and Persia,1680.0,1460.0,1676.0,1248.0,high,"Rhagae (Rey, Tehran)",Rages (Tobit; Rhagae) (p. 71),35.59,51.44,0.714,78.434,1556.137,69.796,8.638,38.625,55.294,481.863
+792,Remesburgh,154,Europe,Medieval,Central Europe,1080.0,3110.0,1086.0,3016.0,high,Regensburg,"Ratisbon, under its German designation Regensburg (p. 154)",49.02,12.1,0.652,324.961,2720.243,321.524,3.437,53.184,15.781,546.182
+793,Remis,145,Europe,Classical,France,1360.0,3580.0,1370.0,3513.0,high,Reims,"Rheims, the ancient Remi or Durocortorum, an archiepiscopal see (p. 145)",49.26,4.03,0.766,297.327,3238.844,316.001,-18.674,47.22,4.549,237.018
+801,Rokesburg,171,British Isles,Medieval,British Isles,745.0,3500.0,753.0,3436.0,high,Roxburgh,"Roxburgh, another border fortress of importance (p. 171)",55.6,-2.45,0.98,320.121,3942.065,323.455,-3.334,57.705,1.946,377.898
+802,Roma,130,Europe,Classical,Italy,1900.0,3320.0,1910.0,3230.0,high,Rome,Roma caput mundi (p. 130),41.9,12.49,0.511,270.0,2305.619,305.63,-35.63,38.664,12.838,366.979
+803,Rotomagum,145,Europe,Classical,France,1215.0,3610.0,1225.0,3547.0,high,Rouen,"Rouen, the metropolis of Normandy, as Higden styles it (p. 145)",49.44,1.1,0.83,302.506,3441.376,314.806,-12.3,49.521,2.845,128.1
+811,Sabrata,93,Africa,Classical,North Africa,2330.0,2895.0,2338.0,2771.0,medium,Sabratha,Sabrata (p. 93),32.8,12.48,0.365,219.936,2137.857,279.14,-59.204,31.43,22.374,946.161
+819,Salema,131,Europe,Classical,Italy,2000.0,3215.0,2009.0,3116.0,high,Salerno,"the ancient Salernum, a place of great fame in the Middle Ages for its school of medicine (p. 131)",40.68,14.77,0.448,261.634,2078.277,304.167,-42.533,37.072,15.361,409.321
+826,Samarcan,52,Asia,Medieval,India and Central Asia,1240.0,1300.0,1233.0,1083.0,high,Samarkand,"Samarkand, the Maracanda of Arrian and Ptolemy (p. 52)",39.65,66.96,0.912,61.879,2977.43,63.989,-2.11,44.705,62.71,682.702
+827,Samosaka,73,Asia,Classical,Syria and Anatolia,1650.0,1830.0,1648.0,1643.0,high,Samosata,"Samosata, which was not in Mesopotamia, though on the Euphrates (p. 73)",37.52,38.48,0.487,70.475,704.127,24.024,46.451,40.99,47.414,861.966
+829,S. Andr,171,British Isles,Medieval,British Isles,690.0,3425.0,697.0,3356.0,high,St Andrews,"St Andrews, an episcopal see (p. 171)",56.34,-2.8,0.978,323.664,3998.408,324.438,-0.774,58.93,3.728,512.344
+847,Scinopodes,102,Africa,Legendary,,3430.0,2130.0,3436.0,1941.0,high,,the Sciapodes (p. 102),,,1.031,165.174,,,,,,
+858,Septem Montes,99,Africa,Classical,North Africa,2280.0,4000.0,2296.0,3950.0,high,Ceuta,the station Ad septem Fratres ... at or near Ceuta (p. 99),35.89,-5.32,0.985,255.459,3746.881,288.301,-32.842,30.45,-0.354,791.598
+865,Siene,84,Asia,Classical,Egypt and Sinai,3270.0,2430.0,3278.0,2263.0,high,Aswan (Syene),the tower and celebrated well of Syene (p. 84),24.09,32.9,0.895,175.617,884.873,195.581,-19.963,14.393,30.165,1111.131
+869,Sinay,81,Asia,Biblical,Holy Land,2525.0,1765.0,2526.0,1563.0,high,Mount Sinai,"mons Sinay, and near it Moyses (p. 81)",28.54,33.97,0.646,129.066,379.873,198.985,-69.92,25.715,44.488,1088.939
+882,Snawedon,171,British Isles,Medieval,British Isles,810.0,3580.0,819.0,3520.0,high,Snowdon,"Snowdon, a district name answering to our Snowdonia (p. 171)",53.07,-4.08,0.983,316.207,3925.215,318.794,-2.586,56.281,0.211,479.805
+883,Snotingham,169,British Isles,Medieval,British Isles,940.0,3570.0,949.0,3508.0,high,Nottingham,the original form of Nottingham (p. 169),52.95,-1.15,0.919,312.847,3739.373,319.807,-6.96,54.21,1.749,248.787
+886,Sodom,77,Asia,Biblical,Holy Land,2390.0,2005.0,2392.0,1821.0,medium,"Sodom, by the Dead Sea",Sodoma and Gomorra on the surface of the Dead Sea (p. 77),31.05,35.4,0.47,132.754,82.317,168.958,-36.204,28.875,40.327,533.172
+904,Suffetula,96,Africa,Classical,North Africa,2780.0,3165.0,2791.0,3053.0,high,Sufetula (Sbeitla),"a central station in the interior, frequently mentioned in the Itinerary (p. 96)",35.24,9.12,0.705,215.599,2444.396,286.181,-70.582,23.494,17.018,1535.106
+914,Tapbana,34,Asia,Classical,India and Central Asia,2810.0,1290.0,2808.0,1053.0,high,"Sri Lanka (Taprobane, Ceylon)","the isle of Taprobane (Ceylon) (p. 21); a large triangular island, intended for Ceylon (p. 33)",7.87,80.77,1.004,126.164,5398.481,109.403,16.761,18.85,52.038,3349.077
+917,Tarsus,68,Asia,Classical,Syria and Anatolia,1450.0,2320.0,1451.0,2168.0,high,Tarsus,the city of Tarsus (p. 68),36.92,34.9,0.325,25.537,572.731,357.02,28.518,46.175,36.823,1040.31
+925,Terracona,126,Europe,Classical,Spain,1830.0,3840.0,1844.0,3785.0,high,Tarragona,Terracona (p. 126),41.12,1.25,0.851,273.07,3188.677,298.655,-25.585,38.474,1.024,307.079
+933,Thessalonica,135,Europe,Classical,Greece and Constantinople,1490.0,2950.0,1496.0,2840.0,high,Thessaloniki,Thessalonica (p. 135),40.64,22.94,0.38,314.653,1476.516,315.293,-0.64,46.18,20.919,639.015
+935,Tholomaida,78,Asia,Biblical,Holy Land,1700.0,2660.0,1705.0,2528.0,high,Acre (Ptolemais),Ptolemais (p. 78),32.92,35.07,0.154,327.995,128.065,353.113,-25.119,42.388,27.963,1222.663
+952,Toletum,126,Europe,Classical,Spain,1605.0,3880.0,1618.0,3831.0,high,Toledo,Toletum (p. 126),39.86,-4.03,0.897,282.371,3621.559,295.514,-13.144,42.015,-1.127,352.417
+953,Tolosa,147,Europe,Classical,France,1490.0,3790.0,1502.0,3736.0,medium,Toulouse,Toulouse (p. 147),43.6,1.44,0.86,288.092,3222.716,303.769,-15.677,44.272,0.238,123.013
+960,Tripolis,76,Asia,Classical,Syria and Anatolia,1615.0,2505.0,1618.0,2364.0,high,"Tripoli, Lebanon",Tripolis (p. 76),34.44,35.85,0.187,6.009,301.641,10.789,-4.78,43.676,31.809,1083.107
+964,Troja,69,Asia,Classical,Greece and Constantinople,1420.0,2700.0,1424.0,2574.0,medium,Troy,Troja (p. 69),39.96,26.24,0.33,341.03,1217.184,320.871,20.158,47.353,27.277,828.595
+970,Turonis,147,Europe,Classical,France,1580.0,3695.0,1592.0,3633.0,medium,Tours,Turonis (p. 147),47.39,0.69,0.784,285.422,3391.475,310.854,-25.432,43.148,3.011,519.773
+984,Venicia,118,Seas and islands,Classical,Italy,1610.0,3215.0,1618.0,3121.0,high,Venice,"Venice, the insular character of which is indicated with considerable exaggeration (p. 118)",45.44,12.33,0.481,293.097,2488.678,314.177,-21.08,43.845,14.588,252.41
+985,Vercellis,130,Europe,Classical,Italy,1755.0,3470.0,1766.0,3391.0,medium,Vercelli,properly Vercellae (p. 130),45.32,8.42,0.616,278.815,2755.496,310.821,-32.006,40.858,9.016,510.012
+996,Wintona,170,British Isles,Medieval,British Isles,1160.0,3760.0,1171.0,3708.0,high,Winchester,Winchester (p. 170),51.06,-1.31,0.932,301.135,3667.316,316.568,-15.433,49.775,-1.461,150.817
+997,Wircestr,169,British Isles,Medieval,British Isles,1035.0,3715.0,1045.0,3662.0,medium,Worcester,"Worcester, an episcopal see (p. 169)",52.19,-2.22,0.953,306.243,3772.41,318.089,-11.846,52.005,-1.384,60.874
+1017,Ysland,162,Europe,Medieval,Iceland and Norway,410.0,2970.0,413.0,2874.0,high,Iceland,"Iceland, colonised by the Norwegians (p. 162)",64.9,-18.6,1.011,343.725,5158.846,331.774,11.951,65.004,17.524,1747.111
+1023,Zimarim,33,Asia,Classical,India and Central Asia,2530.0,1310.0,2527.0,1078.0,high,"Muziris, now probably Mangalore","Zimaris ... Muziris, a commercial port ... now probably Mangalore (p. 33)",12.87,74.84,0.897,117.216,4548.3,108.354,8.862,23.67,53.018,2594.26

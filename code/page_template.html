@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mappa Mundi</title>
+<meta name="description" content="The Hereford Mappa Mundi (c. 1300) set beside a modern map: the {{source.n|int}} names that Bevan and Phillott indexed in 1873, which real places they are, where the map puts them, and how much of it is Biblical, classical, medieval and legendary.">
+<meta property="og:title" content="The world according to the Hereford Mappa Mundi">
+<meta property="og:description" content="The largest surviving medieval map of the world, put on a modern map. Jerusalem at the centre, east at the top, and Britain and Ireland with {{britain.names_pct|f1}}% of its names but {{britain.area_pct|f1}}% of the land.">
+<meta property="og:image" content="https://maps.tristanhotham.com/mappa-mundi/header.png">
+<meta property="og:url" content="https://maps.tristanhotham.com/mappa-mundi/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+/* Vellum: calfskin paper, iron-gall ink, the scribe's vermilion, lapis for the sea, and gold leaf. */
+:root{
+  --bg:#F7F2E7; --panel:#EEE6D4; --fg:#22201C; --muted:#68625A; --rule:#E0D6C1; --card:#FFFCF4; --border:#CEC2A8;
+  --bib:#8E3B2E; --cla:#2F5FA7; --med:#2E8A6E; --leg:#B07A12; --red:#B23A2A; --ink:#2A3550; --land:#E7DFCB; --sea:#E9EEEC; --gold:#B07A12;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15130F; --panel:#1F1C17; --fg:#EEE8DC; --muted:#AAA294; --rule:#332F27; --card:#1A1813; --border:#4A443A;
+  --bib:#E07D6B; --cla:#7EA7E8; --med:#5CC49F; --leg:#E8B54F; --red:#F07B66; --ink:#B5C1DE; --land:#2A2720; --sea:#14171A; --gold:#E8B54F; color-scheme:dark; --icofilter:invert(1)}}
+:root[data-theme="dark"]{
+  --bg:#15130F; --panel:#1F1C17; --fg:#EEE8DC; --muted:#AAA294; --rule:#332F27; --card:#1A1813; --border:#4A443A;
+  --bib:#E07D6B; --cla:#7EA7E8; --med:#5CC49F; --leg:#E8B54F; --red:#F07B66; --ink:#B5C1DE; --land:#2A2720; --sea:#14171A; --gold:#E8B54F; color-scheme:dark; --icofilter:invert(1)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:700px;margin:0 auto;padding-block:28px 64px}
+.wrap .bleed{width:min(1240px,calc(100vw - 32px));margin-left:calc((100% - min(1240px,100vw - 32px))/2);margin-right:0}
+a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--red);color:#fff;padding:5px 8px;font-weight:500}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end;border-bottom:6px double var(--fg);padding-bottom:22px;margin-top:18px}
+h1{font:900 clamp(46px,11.5vw,88px)/.9 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 span{color:var(--red)}
+.mark{width:clamp(78px,16vw,128px);height:auto;display:block;color:var(--fg)}
+.dek{grid-column:1/-1;font-size:21px;line-height:1.42;margin:8px 0 0;max-width:58ch}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:54px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--red);display:block;letter-spacing:.1em;margin-bottom:10px}
+h3{font:600 20px/1.25 var(--display);margin:28px 0 6px}
+p{margin:0 0 16px}
+.lede::first-letter{font:900 72px/.8 var(--display);float:left;margin:6px 10px 0 0;color:var(--red)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 8px}
+.stats div{background:var(--card);padding:14px 12px}
+.stats b{display:block;font:900 clamp(22px,4.4vw,32px)/1 var(--display);letter-spacing:-.01em}
+.stats b.a{color:var(--red)} .stats b.b{color:var(--cla)} .stats b.c{color:var(--med)} .stats b.d{color:var(--leg)}
+.stats span{font:400 12px/1.35 var(--mono);color:var(--muted);display:block;margin-top:6px}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.figure{margin:26px 0 30px}
+.fig-h{font:600 19px/1.25 var(--display);margin:0 0 4px}
+.fig-sub{font:400 13px/1.45 var(--mono);color:var(--muted);margin:0 0 12px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+.chart{width:100%;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono);fill:var(--fg)}
+.lab{font-size:12px}.lab.m{fill:var(--muted)}.lab.b{font-weight:500}.lab.s{font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font:400 12px/1.45 var(--mono);padding:8px 10px;border-radius:3px;max-width:300px;z-index:1000;transform:translate(-50%,calc(-100% - 12px));display:none}
+.tip b{font-weight:500}
+.controls{display:flex;gap:8px;align-items:center;margin:0 0 10px;flex-wrap:wrap}
+.scrollrow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding-bottom:2px;max-width:100%}
+.scrollrow .btn{flex:0 0 auto;white-space:nowrap}
+.ctl-l{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px;flex:0 0 auto;align-self:center}
+.btn{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:8px 10px;cursor:pointer;min-height:36px}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1px solid rgba(0,0,0,.2)}
+.btn:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.searchbox{position:relative;flex:1 1 260px;min-width:0}
+input[type=search]{font:400 15px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:10px 11px;min-height:40px;width:100%}
+.suggest{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:var(--card);border:1px solid var(--border);z-index:1003;font:400 13px/1.3 var(--mono);display:none;max-height:340px;overflow:auto}
+.suggest li{padding:8px 10px;cursor:pointer;border-bottom:1px solid var(--rule)}
+.suggest li span{color:var(--muted)}
+.suggest li[aria-selected="true"],.suggest li:hover{background:var(--panel)}
+.twin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:860px){.twin{grid-template-columns:1fr}}
+.mapcap{font:500 11px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;align-items:end}
+.mapcap b{color:var(--fg);font-weight:500}
+.lmap{height:600px;border:1px solid var(--border);background:var(--sea);border-radius:2px;position:relative;overflow:hidden}
+#mmap{background:var(--panel)}
+@media (max-width:860px){.lmap{height:min(66vh,520px)}}
+.side{background:var(--card);border:1px solid var(--border);padding:12px 14px 10px;font:400 13px/1.5 var(--mono);margin-top:12px;min-height:90px}
+.side .big{font:800 26px/1.1 var(--display);margin:2px 0 4px}
+.side .sub{color:var(--muted);font-size:12px;margin:0 0 8px}
+.side q{font-family:var(--body);font-style:italic;font-size:15px}
+.side table{border-collapse:collapse;margin:6px 0}
+.side td{padding:3px 12px 3px 0;vertical-align:top}
+.side td:first-child{color:var(--muted);white-space:nowrap}
+.chip{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.maplibregl-map{font:400 12px/1.4 var(--mono)}
+.maplibregl-ctrl-attrib{background:color-mix(in srgb,var(--card) 85%,transparent)!important;color:var(--muted)}
+.maplibregl-ctrl-attrib a{color:var(--fg)}
+.maplibregl-ctrl-group{background:var(--card)}
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon{filter:var(--icofilter,none)}
+.lyrWrap{position:absolute;top:10px;left:10px;z-index:3}
+.lyrBtn{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;font:600 12px/1 var(--mono);padding:9px 10px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.lyrBtn[aria-expanded="true"]{background:var(--fg);color:var(--bg)}
+.lyrPanel{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:10px 12px 8px;margin-top:6px;width:250px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:400 12px/1.3 var(--mono);max-height:min(60vh,470px);overflow:auto}
+.lyrPanel[hidden]{display:none}
+.lyrPanel .row{margin:0 0 9px}
+.lyrPanel label{display:flex;gap:6px;align-items:center;cursor:pointer;font-weight:600}
+.lyrPanel input[type=range]{width:100%;accent-color:var(--fg)}
+.lyrPanel .sub{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:11px;margin-top:3px}
+.lyrPanel .hd{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 7px;border-top:1px solid var(--rule);padding-top:9px}
+.lyrPanel .hd:first-child{border-top:0;padding-top:0;margin-top:0}
+.lyrPanel .reset{font:400 11px var(--mono);color:var(--muted);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.pinL{font:600 12px/1.1 var(--mono);color:var(--fg);background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--border);padding:3px 6px;border-radius:2px;white-space:nowrap;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 13px var(--mono);color:var(--muted);z-index:1;text-align:center;padding:20px}
+.fallback{position:absolute;inset:0;width:100%;height:100%}
+.fbnote{position:absolute;left:10px;bottom:10px;right:10px;font:400 12px/1.4 var(--mono);color:var(--muted);background:color-mix(in srgb,var(--card) 92%,transparent);padding:6px 9px;border:1px solid var(--border);border-radius:3px;pointer-events:none}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font:400 12px/1.3 var(--mono);color:var(--muted);margin-top:8px;align-items:center}
+.legend span{display:inline-flex;align-items:center}
+.legend i{display:inline-block;width:11px;height:11px;margin-right:6px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.legend i.ln{height:0;border:0;border-top:2px solid;width:18px;border-radius:0}
+.legend i.sq{border-radius:2px;width:14px}
+.pull{font:600 26px/1.25 var(--display);border-left:6px solid var(--red);padding:4px 0 4px 18px;margin:30px 0}
+.note{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font-size:16px;margin:22px 0}
+table.tbl{width:100%;border-collapse:collapse;font:400 13px/1.4 var(--mono)}
+table.tbl th{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 6px 6px 0;border-bottom:2px solid var(--fg);white-space:nowrap;position:sticky;top:0;background:var(--card)}
+table.tbl td{padding:6px 6px 6px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.tbl td.r,table.tbl th.r{text-align:right;white-space:nowrap}
+table.tbl tr[data-k]{cursor:pointer}
+table.tbl tr[data-k]:hover td{background:var(--panel)}
+.tablebox{max-height:460px;overflow:auto;border:1px solid var(--border);background:var(--card);padding:0 10px}
+details{margin:14px 0}
+summary{font:500 13px/1.4 var(--mono);cursor:pointer;color:var(--fg);padding:8px 0}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--red);border-color:var(--red);color:#fff}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.theme{position:fixed;right:12px;bottom:12px;z-index:1002}
+[hidden]{display:none!important}
+@media print{.theme,.controls{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker"><b>Data study</b><span>History</span><span>Hereford, about 1300</span></div>
+<header class="hero">
+  <h1>Mappa <span>Mundi</span></h1>
+  <svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><g id="heroMark"></g></svg>
+  <p class="dek">The world according to the largest medieval map that survives. I took the {{source.n|int}} names that two Victorian clergymen indexed on the Hereford Mappa Mundi, matched them to real places where I could, and set the map beside a modern one: Jerusalem at the centre, east at the top, Paradise at the edge of the world, and Britain drawn far bigger than its size.</p>
+</header>
+<div class="byline">Dr Tristan Hotham · Independent researcher · 2026 · Sources: Bevan and Phillott (1873); Konrad Miller's facsimile (1896); Pleiades; Natural Earth</div>
+
+<div class="stats">
+  <div><b class="a">{{source.n|int}}</b><span>names on the map in the 1873 index, from rivers and towns to monsters</span></div>
+  <div><b class="b">{{classes.Classical.pct|int}}%</b><span>come from Greek and Roman writers; {{classes.Biblical.pct|int}}% from the Bible</span></div>
+  <div><b class="c">{{britain.names_pct|f1}}%</b><span>of the names are in Britain and Ireland, {{britain.area_pct|f1}}% of the land</span></div>
+  <div><b class="d">{{bearing.within45_pct|int}}%</b><span>of the {{located.unique_real|int}} places I located point the right way from Jerusalem, within 45 degrees</span></div>
+</div>
+
+<p class="lede">In Hereford Cathedral hangs a sheet of calfskin about {{wiki.h_cm|int}} cm tall and {{wiki.w_cm|int}} cm wide, painted around 1300. It is the largest medieval map of the world still in existence. It is not a map you could travel by. Jerusalem sits at the exact centre. East is at the top, where the Garden of Eden floats in a ring of fire. The Mediterranean runs up the middle like the stem of a T, splitting Europe on the left from Africa on the right, and the far edge of the world is crowded with dog-headed men, one-footed Sciapods and people with faces in their chests. Yet it is also full of real places: Paris, Rome, Babylon, Samarkand, and dozens of English cathedral towns.</p>
+<p>In 1873 two Herefordshire clergymen, W. L. Bevan and H. W. Phillott, published a book that went over the map name by name and ended with an index of {{source.n|int}} names. I used that index as the inventory of the map, matched the names to real places through the book's own identifications and the Pleiades gazetteer of ancient places, and located {{located.n|int}} of the clearest inscriptions by eye on Konrad Miller's 1896 facsimile. Click a place on either map below to see it on the other.</p>
+
+<h2><span class="n">01 · Two maps</span>The medieval world and the real one</h2>
+<div class="bleed" id="atlas">
+<div class="controls"><div class="scrollrow" id="clsRow"><span class="ctl-l">Show</span></div></div>
+<div class="controls">
+  <div class="searchbox"><input type="search" id="q" placeholder="Search a place or a name on the map (London, Babylon, Gog...)" aria-label="Search a place" autocomplete="off"><ul class="suggest" id="sug" role="listbox"></ul></div>
+</div>
+<div class="controls"><div class="scrollrow" id="focusRow"><span class="ctl-l">Go to</span></div></div>
+<div class="twin">
+  <div><div class="mapcap"><span><b>Hereford, about 1300</b> · east at the top</span><span id="imgName">Miller's 1896 facsimile</span></div>
+    <div id="mmap" class="lmap" data-fullscreen-map role="application" aria-label="The Hereford Mappa Mundi, zoomable, with the located inscriptions marked"><div class="loading">Loading the medieval map...</div></div></div>
+  <div><div class="mapcap"><span><b>The same places today</b> · north at the top</span><span>Natural Earth</span></div>
+    <div id="wmap" class="lmap" data-fullscreen-map role="application" aria-label="Modern map of the places identified on the Hereford map"><div class="loading">Loading the modern map...</div></div></div>
+</div>
+<div class="legend" id="legend"></div>
+<div class="side" id="side" aria-live="polite"></div>
+<p class="src">Left: Konrad Miller's 1896 hand-drawn facsimile of the map (the labels are clearer than on the worn original); switch to a photograph of the original in Map layers. Dots: the {{located.n|int}} inscriptions I located by eye, coloured by class. Right: the {{located.real|int}} of them that the 1873 book identifies with a real place, at that place, and (smaller dots, in Map layers) {{placed.pleiades|int}} more names matched in the Pleiades gazetteer but not located on the map. Grey arrows (Map layers): from each place to where the map would put it if it were an ordinary map, after the best rotation and scaling. Sources: Bevan and Phillott (1873); Wikimedia Commons (public domain images); Pleiades (CC BY 3.0); Natural Earth.</p>
+</div>
+
+<h2><span class="n">02 · The inventory</span>A thousand names, by part of the world</h2>
+<p>Bevan and Phillott walk around the map the way a medieval reader would: Asia first, from Paradise downwards, then Africa, then the seas and their islands, then Europe and, last of all, the British Isles. Their index of {{source.n|int}} names follows that tour. Asia, the top half of the map, has {{parts.Asia.n|int}}; Europe, the bottom left quarter, {{parts.Europe.n|int}}; Africa, the bottom right, {{parts.Africa.n|int}}; the seas and islands {{parts.Seas and islands.n|int}}; and the British Isles, squeezed into the bottom left corner, {{parts.British Isles.n|int}}. Most are settlements, regions or peoples ({{types.place or people|int}}); the rest are rivers ({{types.river|int}}), islands ({{types.island|int}}), mountains ({{types.mountain|int}}) and seas. Wikipedia's article on the map counts its pictures another way: about {{wiki.towns|int}} towns, {{wiki.biblical_events|int}} Biblical events, {{wiki.animals|int}} animals and plants, {{wiki.people|int}} people and {{wiki.myth_scenes|int}} scenes from classical mythology.</p>
+<div class="figure"><p class="fig-h">Names on the map, by part of the world and where they come from</p><p class="fig-sub">The {{source.n_named|int}} names in Bevan and Phillott's index, leaving out the winds, quarters, continent labels and real animals and plants of the frame. Classes as defined below. Hover or tap a bar.</p><div class="chart" id="partChart"></div><div class="legend" id="partLegend"></div></div>
+
+<h2><span class="n">03 · Sources</span>Bible, classics, Middle Ages and marvels</h2>
+<p>Bevan and Phillott sort the map's contents into four kinds of material: Biblical, classical, legendary and what they call contemporaneous, the medieval knowledge of the mapmaker's own day, which they found "almost entirely confined to Europe". I sorted every name the same way, with a fixed rule set out in the methods below. By that rule {{classes.Classical.n|int}} names, {{classes.Classical.pct|int}}%, are classical: Greek and Roman places and peoples, most of them taken from late Roman compilers such as Pliny, Solinus, Orosius and Isidore, and from the Antonine Itinerary, a Roman road book. {{classes.Biblical.n|int}}, {{classes.Biblical.pct|int}}%, are Biblical, from Eden's four rivers to the stations of the Exodus. {{classes.Medieval.n|int}}, {{classes.Medieval.pct|int}}%, are medieval: Santiago de Compostela, Prague, Iceland, Hungary and the towns of Britain. And {{classes.Legendary.n|int}}, {{classes.Legendary.pct|int}}%, are legend: Paradise, Gog and Magog, the Golden Fleece, the Minotaur's labyrinth, and the monstrous races.</p>
+<div class="pull">Nine names in ten in Britain and Ireland are medieval ({{britain.medieval_pct|int}}%). In Asia {{part_class.Asia.Medieval_pct|int}}% are.</div>
+<p>The mix changes across the map. Asia holds every Biblical name ({{part_class.Asia.Biblical|int}}) and most of the legendary ones ({{part_class.Asia.Legendary|int}}); Africa's are almost all classical, with its marvels crowded along the southern rim; Europe's are mostly Roman, with a layer of medieval kingdoms and pilgrim shrines on top. Only in the British Isles is the map up to date.</p>
+<div class="figure"><p class="fig-h">The four kinds of material</p><p class="fig-sub">Share of the {{source.n_named|int}} names in each class.</p><div class="chart" id="classChart"></div></div>
+
+<h2><span class="n">04 · Direction and distance</span>Roughly right, wildly out of scale</h2>
+<p>To compare the map with reality I measured, for each located place, its direction and distance from Jerusalem, on the map and on the globe. Directions hold up surprisingly well once the map is turned so that east is at the top. For the {{bearing.n|int}} real places I located, the median error in direction is {{bearing.median_abs_err|int}} degrees, and {{bearing.within45_pct|int}}% point within 45 degrees of the right way. London, for instance, is {{places.London.true_km|int}} km from Jerusalem on a bearing of {{places.London.true_brg|int}} degrees; the map puts it at {{places.London.map_brg|int}} degrees. Samarkand is off by just {{places.Samarkand.brg_err|int}}.</p>
+<div class="figure"><p class="fig-h">Which way from Jerusalem: map against reality</p><p class="fig-sub">Each dot is a located place: its true compass bearing from Jerusalem (across) and its bearing on the map, reading east as up (up the chart). Dots on the diagonal point the right way. Hover a dot.</p><div class="chart" id="brgChart"></div><div class="legend" id="regLegend"></div></div>
+<p>Distance is another matter. The order is kept (the rank correlation between true distance and distance on the map is {{dist.spearman|f2}}), but the scale collapses towards the edge. Places within 500 km of Jerusalem, a median of {{dist.near_km|int}} km away, sit a median {{dist.near_frac_pct|int}}% of the way from the centre to the rim. Places 3,000 km or more away, a median of {{dist.far_km|int}} km, sit at {{dist.far_frac_pct|int}}%. They are {{dist.km_ratio|f1}} times as far in reality but only {{dist.frac_ratio|f1}} times as far on the map. Bethlehem, {{places.Bethlehem.true_km|int}} km from Jerusalem, is {{places.Bethlehem.map_pct|int}}% of the way out; London, {{places.ratio_london_bethlehem_km|int}} times farther, is {{places.London.map_pct|int}}%. Everything far away is pressed against the encircling ocean.</p>
+<div class="figure"><p class="fig-h">Distance from Jerusalem: map against reality</p><p class="fig-sub">True great-circle distance (across, log scale) against distance on the map as a share of the way from Jerusalem to the edge of the world (up). Hover a dot.</p><div class="chart" id="distChart"></div></div>
+
+<h2><span class="n">05 · Squeezed and stretched</span>The Holy Land swells, India shrinks</h2>
+<p>To see which regions are drawn big, I compared distances between pairs of places within each region on the map and on the ground, against the same ratio for the map as a whole. The Holy Land is drawn {{regions.Holy Land.stretch|f1}} times bigger than the map's average; Egypt and Sinai {{regions.Egypt and Sinai.stretch|f1}} times; Mesopotamia and Persia {{regions.Mesopotamia and Persia.stretch|f1}}; the British Isles {{regions.British Isles.stretch|f1}}. India and Central Asia are squeezed to {{regions.India and Central Asia.stretch|f2}} of the average, and Iceland, Norway and the Faroes are crammed into the rim so tightly that they barely register. The map spends its space on Scripture and on home.</p>
+<div class="figure"><p class="fig-h">How big each region is drawn</p><p class="fig-sub">Median of map distance over true distance, for pairs of located places in the region at least 100 km apart, relative to all pairs on the map (1 = average scale). Regions with at least five located places.</p><div class="chart" id="stretchChart"></div></div>
+<p>The other big distortion is the Mediterranean. On the map it is a straight channel running from the Pillars of Hercules at the bottom to the Holy Land at the centre, so North Africa slides round towards the south: its places point a median {{regions.North Africa.median_abs_brg_err|int}} degrees off from Jerusalem, and Egypt's {{regions.Egypt and Sinai.median_abs_brg_err|int}}. If the whole map is laid on the globe with the best rotation and scaling, the rotation that fits best turns the map's top to a bearing of {{fit.up_bearing|int}} degrees, a little south of due east, and the median place lands {{fit.median_disp_km|int}} km from where it really is. Turn on the grey arrows in Map layers to see where each place would fall.</p>
+
+<h2><span class="n">06 · Home</span>Britain, drawn from life</h2>
+<p>The British Isles are a sliver of the world the map covers: {{britain.area_pct|f1}}% of the land of Africa, Asia and Europe, by Natural Earth's outlines. They have {{britain.names|int}} names, {{britain.names_pct|f1}}% of the index, about {{britain.over_x|int}} times their share of the land. Bevan and Phillott noticed: "The British Isles are drawn on a scale out of all proportion to the other parts of the map." Here, for once, the mapmaker was working from his own knowledge rather than from books. The towns are mostly cathedral cities and abbeys, Lincoln with its cathedral on a hill, Durham on its rock, Ely on an island in the fens, Glastonbury, Kirkham Priory; the rivers of the Humber, they wrote, are drawn "with a degree of accuracy which implies personal acquaintance with that part of the country".</p>
+<p>It is not flawless. Caen in Normandy has been carried across the Channel into Devon, "by a strange blunder", perhaps because its two great abbeys held so much English land. Hereford itself is only a faint drawing of a cathedral, worn, as Wikipedia notes, perhaps by centuries of pointing fingers. But measured from Jerusalem the British towns point the right way to within a median {{regions.British Isles.median_abs_brg_err|int}} degrees, among the best on the map.</p>
+<div class="figure"><p class="fig-h">The located places, region by region</p><p class="fig-sub">Number located, median true distance from Jerusalem, median error in direction, and how big the region is drawn relative to the map as a whole. Click a row to see the region on both maps.</p><div class="tablebox" style="max-height:none"><table class="tbl" id="regTable"></table></div></div>
+
+<h2><span class="n">07 · How I did this</span>Methods and caveats</h2>
+<p><b>The inventory.</b> The index of Bevan and Phillott's Mediaeval Geography (1873), read from the Internet Archive's scan, is the list of names: {{source.n|int}} entries, each with the page where the book discusses it. The book is arranged by part of the map, so each name's page gives its continent. The scan's text is rough, and the map's own words, printed in black-letter type, come out as gibberish ("ColcegtriH" for Colcestria); I corrected the index entries the scanning had mangled, and the full text of every page is in the data, for checking.</p>
+<p><b>The classes.</b> I followed the book's own four kinds of material. Legendary: monstrous peoples, fabulous beasts and the places and objects of legend and myth, from a list I drew up. Biblical: every name in the book's sections on the rivers of Paradise, Palestine and Arabia, and the Exodus, and a few Biblical names elsewhere (Babel, Ur, Nineveh, Noah's Ark). Medieval: in the British Isles every name except a handful that come from Roman writers, and in the rest of Europe a list of post-Roman places, regions and peoples. Classical: everything else. The winds, quarters, continent labels and real animals and plants are left out. These are judgements, made name by name; the lists are in the code.</p>
+<p><b>Real places.</b> For the {{located.n|int}} inscriptions I located on the facsimile I read the book's identification (Zimaris is "now probably Mangalore", Babylon in Egypt is "the city of Cairo") and placed it on the modern map. For the other names I looked for the same name in the Pleiades gazetteer of ancient places, allowing for simple medieval spellings, in the right part of the world, and checked every match by hand, rejecting {{placed.rejected|int}} that pointed to a different place with the same or a similar name. In all {{placed.n|int}} of the {{placed.n_real|int}} non-legendary names, {{placed.pct|int}}%, have a real-world position: {{placed.book|int}} from the book and {{placed.pleiades|int}} from Pleiades. That is a lower bound on what can be identified: the book names many more rivers, peoples and towns that I did not try to place by hand.</p>
+<p><b>Positions on the map.</b> There is no coordinate dataset for the Hereford map, so I located {{located.n|int}} well-known, legible inscriptions by eye on Miller's facsimile, at the town picture or, failing that, the middle of the label: {{located.high|int}} read clearly and {{located.medium|int}} with some doubt (worn, crowded or ambiguous). They are carried onto the photograph of the original by an affine fit on {{fit_photo.n|int}} features clear on both, with a typical error of {{fit_photo.rms_px|int}} pixels, about {{fit_photo.rms_pct|f1}}% of the map's width: the facsimile is a hand-made copy and the vellum has shrunk and buckled. Directions are measured with east as up and from the centre of the walled circle of Jerusalem; distances on the map as a share of the way from Jerusalem to Paradise or the Pillars of Hercules ({{located.radius_px|int}} pixels on the facsimile).</p>
+<p><b>What this is not.</b> A sample of the map, not all of it: the located places are the legible and well-known ones, so the distortion figures describe the map's real towns, not its whole surface. The 1873 identifications are the Victorians' and some have been revised since; the book itself calls a few names unknown. For a complete modern edition of every inscription, see Scott Westrem's The Hereford Map (2001) and the Virtual Mappa project.</p>
+<details><summary>Sources and licences</summary>
+<ul>
+<li>Bevan, W. L. and Phillott, H. W. (1873) Mediaeval Geography: an essay in illustration of the Hereford Mappa Mundi. London: E. Stanford. Internet Archive scan, public domain.</li>
+<li>Miller, K. (1896) facsimile of the Hereford map, and (1903) Die Herefordkarte, used for cross-checks. Public domain. Image: Wikimedia Commons, "1896 facsimile of the Hereford Mappa Mundi by Konrad Miller".</li>
+<li>Photograph of the map: Wikimedia Commons, "Hereford Mappa Mundi 1300.jpg", public domain.</li>
+<li>Pleiades: a gazetteer of past places, version {{source.pleiades_version|raw}}, CC BY 3.0.</li>
+<li>English Wikipedia, "Hereford Mappa Mundi", for the facts on the map's size, date and contents, CC BY-SA 4.0.</li>
+<li>Natural Earth outlines and towns (public domain). Optional shaded relief tiles © Esri.</li>
+</ul></details>
+
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.23878612">Read the paper</a><a href="https://github.com/Tristan-Hotham/mappa-mundi">Data and code</a><a href="https://blog.tristanhotham.com/2026/10/31/mappa-mundi/">Blog post</a></div>
+
+<footer>
+<p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>.</p>
+<p>Cite as: Hotham, T. (2026) The world according to the Hereford Mappa Mundi: a medieval map of the world set against a modern one. Zenodo. <a href="https://doi.org/10.5281/zenodo.23878612">https://doi.org/10.5281/zenodo.23878612</a></p>
+<p>Licence: code MIT; text, figures and derived data CC BY 4.0. The map images and the 1873 book are public domain; Pleiades data CC BY 3.0.</p>
+<p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+</footer>
+</div>
+<div class="tip" id="tip"></div>
+<button class="btn theme" id="theme" aria-label="Toggle dark mode">◐</button>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+const R = /*RESULTS*/;
+const SITE = /*SITE*/;
+const WORLD = /*WORLD*/;
+const fmt = n => n == null || n === "" ? "n/a" : Math.round(n).toLocaleString("en-GB");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const tip = document.getElementById("tip");
+function showTip(h, x, y) { tip.innerHTML = h; tip.style.display = "block"; const w = tip.offsetWidth; x = Math.max(w / 2 + 8, Math.min(innerWidth - w / 2 - 8, x)); tip.style.left = x + scrollX + "px"; tip.style.top = y + scrollY + "px"; }
+function hideTip() { tip.style.display = "none"; }
+document.addEventListener("click", e => { if (!e.target.closest("svg")) hideTip(); });
+const NS = "http://www.w3.org/2000/svg";
+const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const lbl = (svg, x, y, s, cls = "lab", anchor = "start") => { const t = el("text", { x, y, class: cls, "text-anchor": anchor }, svg); t.textContent = s; return t; };
+const redraws = [];
+function resp(box, render) { let last = 0; const go = force => { const w = Math.max(280, Math.round(box.clientWidth)); if (!force && Math.abs(w - last) < 4) return; last = w; box.innerHTML = ""; render(w, w < 560); }; new ResizeObserver(() => go()).observe(box); go(); redraws.push(() => go(true)); }
+const isDark = () => { const r = document.documentElement; return r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const small = () => innerWidth < 860;
+const KL = SITE.classes.map(c => c[0]), KV = ["--bib", "--cla", "--med", "--leg"], KC = () => KV.map(css);
+const LC = {}; SITE.loc_cols.forEach((k, i) => LC[k] = i);
+const OC = {}; SITE.other_cols.forEach((k, i) => OC[k] = i);
+const LOC = SITE.located, OTH = SITE.other, IMG = SITE.img;
+const byK = {}; LOC.forEach((r, i) => byK[r[LC.k]] = { kind: "loc", i }); OTH.forEach((r, i) => { if (!byK[r[OC.k]]) byK[r[OC.k]] = { kind: "oth", i }; });
+const PARTS = SITE.parts;
+
+/* hero mark: the T-O world, east up, with Jerusalem at the centre */
+(function () {
+  const g = document.getElementById("heroMark");
+  el("circle", { cx: 60, cy: 62, r: 50, fill: "none", stroke: "currentColor", "stroke-width": 3 }, g);
+  el("circle", { cx: 60, cy: 62, r: 43, fill: "none", stroke: "#2F5FA7", "stroke-width": 7, opacity: .55 }, g);
+  el("path", { d: "M60 62 L60 106 M60 62 L22 40 M60 62 L98 40", stroke: "#2F5FA7", "stroke-width": 6, opacity: .7, fill: "none" }, g);
+  el("circle", { cx: 60, cy: 62, r: 6, fill: "#B23A2A" }, g);
+  el("circle", { cx: 60, cy: 17, r: 5, fill: "none", stroke: "#B07A12", "stroke-width": 2.4 }, g);
+})();
+
+/* ---------- state ---------- */
+const S = { cls: new Set([0, 1, 2, 3]), sel: null, img: "miller" };
+let FB = null;   // the still drawing used when MapLibre is missing
+const LYDEF = { mlabels: true, photo: false, photoK: 85, others: true, arrows: false, jer: true, relief: false, reliefK: 35 };
+const LY = { ...LYDEF };
+try { Object.assign(LY, JSON.parse(localStorage.getItem("mm_layers") || "{}")); } catch (e) {}
+const saveLY = () => { try { localStorage.setItem("mm_layers", JSON.stringify(LY)); } catch (e) {} };
+
+/* pixel on the facsimile image -> pseudo coordinates on the medieval map (the image is laid on Web Mercator) */
+const HW = 60, HH = HW * IMG.h / IMG.w;
+const px2ll = (x, y) => { const lon = -HW + 2 * HW * x / IMG.w, my = (HH - 2 * HH * y / IMG.h) * Math.PI / 180; return [lon, (2 * Math.atan(Math.exp(my)) - Math.PI / 2) * 180 / Math.PI]; };
+const MBOUNDS = [px2ll(0, IMG.h), px2ll(IMG.w, 0)];
+
+function pal() { const d = isDark(); return { sea: css("--sea"), land: css("--land"), border: d ? "#3A3830" : "#FFFFFF", ink: css("--fg"), halo: d ? "#15130F" : "#FFFCF4", panel: css("--panel") }; }
+const clsShown = c => S.cls.has(c);
+function locFeatures(geo) {
+  return { type: "FeatureCollection", features: LOC.map((r, i) => {
+    if (geo && r[LC.lat] == null) return null;
+    const c = geo ? [r[LC.lon], r[LC.lat]] : px2ll(r[LC.x], r[LC.y]);
+    return { type: "Feature", id: i, properties: { i, k: r[LC.k], c: r[LC.cls], on: clsShown(r[LC.cls]) ? 1 : 0, conf: r[LC.conf] === "high" ? 1 : 0 }, geometry: { type: "Point", coordinates: c } };
+  }).filter(Boolean) };
+}
+function othFeatures() { return { type: "FeatureCollection", features: OTH.map((r, i) => ({ type: "Feature", id: i, properties: { i, k: r[OC.k], c: r[OC.cls], on: clsShown(r[OC.cls]) ? 1 : 0 }, geometry: { type: "Point", coordinates: [r[OC.lon], r[OC.lat]] } })) }; }
+function arrowFeatures() { return { type: "FeatureCollection", features: LOC.filter(r => r[LC.imp_lat] != null && clsShown(r[LC.cls])).map(r => ({ type: "Feature", properties: { c: r[LC.cls] }, geometry: { type: "LineString", coordinates: [[r[LC.lon], r[LC.lat]], [r[LC.imp_lon], r[LC.imp_lat]]] } })) }; }
+const colExpr = () => { const c = KC(); return ["match", ["get", "c"], 0, c[0], 1, c[1], 2, c[2], 3, c[3], "#888"]; };
+
+/* ---------- the two maps ---------- */
+let mm = null, wm = null, mReady = false, wReady = false, pins = [];
+function startMaps() {
+  if (typeof maplibregl === "undefined") { fallback(); return; }
+  const P = pal();
+  try {
+    mm = new maplibregl.Map({ container: "mmap", bounds: MBOUNDS, fitBoundsOptions: { padding: 6 }, maxBounds: [[MBOUNDS[0][0] - 25, MBOUNDS[0][1] - 20], [MBOUNDS[1][0] + 25, MBOUNDS[1][1] + 12]],
+      minZoom: 0, maxZoom: 6.2, renderWorldCopies: false, attributionControl: { compact: true, customAttribution: "Facsimile: K. Miller 1896; photograph: Wikimedia Commons (public domain)" }, dragRotate: false, pitchWithRotate: false, fadeDuration: 0,
+      style: { version: 8, sources: {
+        miller: { type: "image", url: IMG.miller, coordinates: [px2ll(0, 0), px2ll(IMG.w, 0), px2ll(IMG.w, IMG.h), px2ll(0, IMG.h)] },
+        photo: { type: "image", url: IMG.photo, coordinates: IMG.photo_corners.map(c => px2ll(c[0], c[1])) },
+        pts: { type: "geojson", data: locFeatures(false) }, sel: { type: "geojson", data: { type: "FeatureCollection", features: [] } } },
+        layers: [{ id: "bg", type: "background", paint: { "background-color": P.panel } },
+          { id: "miller", type: "raster", source: "miller", paint: { "raster-fade-duration": 0 } },
+          { id: "photo", type: "raster", source: "photo", layout: { visibility: "none" }, paint: { "raster-opacity": LY.photoK / 100, "raster-fade-duration": 0 } },
+          { id: "pts", type: "circle", source: "pts", filter: ["==", ["get", "on"], 1], paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 3.2, 3, 6, 6, 10], "circle-color": colExpr(), "circle-stroke-color": "#FFFFFF", "circle-stroke-width": 1.4, "circle-opacity": .92 } },
+          { id: "sel", type: "circle", source: "sel", paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 9, 4, 15], "circle-color": "rgba(0,0,0,0)", "circle-stroke-color": "#B23A2A", "circle-stroke-width": 3 } }] } });
+    mm.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    mm.on("error", e => console.warn("mm error", e && e.error && e.error.message));
+    mm.on("load", () => { mReady = true; document.querySelector("#mmap .loading")?.remove(); applyLayers(); bindClicks(mm, "pts", false); drawSel(); });
+    wm = new maplibregl.Map({ container: "wmap", center: small() ? [40, 35] : [42, 36], zoom: small() ? 1.15 : 1.75, minZoom: 0.6, maxZoom: 9, renderWorldCopies: false, attributionControl: { compact: true }, dragRotate: false, pitchWithRotate: false, fadeDuration: 0,
+      style: { version: 8, sources: {
+        world: { type: "geojson", data: WORLD, attribution: "Natural Earth" },
+        relief: { type: "raster", tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"], tileSize: 256, maxzoom: 13, attribution: "Relief: Esri" },
+        oth: { type: "geojson", data: othFeatures(), attribution: "Pleiades (CC BY 3.0)" }, pts: { type: "geojson", data: locFeatures(true) },
+        arr: { type: "geojson", data: arrowFeatures() }, sel: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+        jer: { type: "geojson", data: { type: "Feature", properties: {}, geometry: { type: "Point", coordinates: [SITE.jer[1], SITE.jer[0]] } } } },
+        layers: [{ id: "bg", type: "background", paint: { "background-color": P.sea } },
+          { id: "land", type: "fill", source: "world", paint: { "fill-color": P.land } },
+          { id: "relief", type: "raster", source: "relief", layout: { visibility: "none" }, paint: { "raster-opacity": LY.reliefK / 100 } },
+          { id: "borders", type: "line", source: "world", paint: { "line-color": P.border, "line-width": .6 } },
+          { id: "arr", type: "line", source: "arr", layout: { visibility: "none", "line-cap": "round" }, paint: { "line-color": isDark() ? "#9A9488" : "#7D776D", "line-width": 1.2, "line-opacity": .75 } },
+          { id: "oth", type: "circle", source: "oth", filter: ["==", ["get", "on"], 1], paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 1.8, 6, 4.5], "circle-color": colExpr(), "circle-opacity": .55 } },
+          { id: "pts", type: "circle", source: "pts", filter: ["==", ["get", "on"], 1], paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 3.6, 6, 8], "circle-color": colExpr(), "circle-stroke-color": "#FFFFFF", "circle-stroke-width": 1.2 } },
+          { id: "jer", type: "circle", source: "jer", paint: { "circle-radius": 6, "circle-color": "rgba(0,0,0,0)", "circle-stroke-color": isDark() ? "#F07B66" : "#B23A2A", "circle-stroke-width": 2.2 } },
+          { id: "sel", type: "circle", source: "sel", paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 9, 6, 15], "circle-color": "rgba(0,0,0,0)", "circle-stroke-color": "#B23A2A", "circle-stroke-width": 3 } }] } });
+    wm.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    wm.on("error", () => { /* offline tiles: the plain base map still works */ });
+    wm.on("load", () => { wReady = true; document.querySelector("#wmap .loading")?.remove(); applyLayers(); bindClicks(wm, "pts", true); bindClicks(wm, "oth", true, true); drawSel(); });
+    layersControl();
+  } catch (e) { console.warn(e); fallback(); }
+}
+function bindClicks(map, layer, geo, other) {
+  map.on("click", layer, e => { const f = e.features[0]; if (!f) return; select(f.properties.k, false); });
+  map.on("mouseenter", layer, () => map.getCanvas().style.cursor = "pointer");
+  map.on("mouseleave", layer, () => map.getCanvas().style.cursor = "");
+}
+function closeAttrib() { document.querySelectorAll(".maplibregl-ctrl-attrib.maplibregl-compact").forEach(a => { a.classList.remove("maplibregl-compact-show"); a.removeAttribute("open"); }); }
+function applyLayers() {
+  closeAttrib();
+  if (mReady) { mm.setLayoutProperty("photo", "visibility", LY.photo ? "visible" : "none"); mm.setPaintProperty("photo", "raster-opacity", LY.photoK / 100); mm.setLayoutProperty("pts", "visibility", LY.mlabels ? "visible" : "none");
+    document.getElementById("imgName").textContent = LY.photo ? "photograph of the original over the facsimile" : "Miller's 1896 facsimile"; }
+  if (wReady) { wm.setLayoutProperty("oth", "visibility", LY.others ? "visible" : "none"); wm.setLayoutProperty("arr", "visibility", LY.arrows ? "visible" : "none");
+    wm.setLayoutProperty("jer", "visibility", LY.jer ? "visible" : "none"); wm.setLayoutProperty("relief", "visibility", LY.relief ? "visible" : "none"); wm.setPaintProperty("relief", "raster-opacity", LY.reliefK / 100); }
+}
+function refreshData() {
+  if (mReady) mm.getSource("pts").setData(locFeatures(false));
+  if (wReady) { wm.getSource("pts").setData(locFeatures(true)); wm.getSource("oth").setData(othFeatures()); wm.getSource("arr").setData(arrowFeatures()); }
+  if (FB) FB.draw();
+}
+function layersControl() {
+  const mk = (box, html, bind) => { const w = document.createElement("div"); w.className = "lyrWrap";
+    w.innerHTML = `<button class="lyrBtn" aria-expanded="false">Map layers</button><div class="lyrPanel" hidden>${html}<button class="reset">Reset layers</button></div>`;
+    document.getElementById(box).appendChild(w);
+    const b = w.querySelector(".lyrBtn"), p = w.querySelector(".lyrPanel");
+    ["click", "dblclick", "mousedown", "touchstart", "wheel"].forEach(t => w.addEventListener(t, e => e.stopPropagation(), { passive: true }));
+    b.onclick = () => { const o = p.hidden; p.hidden = !o; b.setAttribute("aria-expanded", o); };
+    w.querySelectorAll("input[data-l][type=checkbox]").forEach(i => { i.checked = !!LY[i.dataset.l]; i.onchange = () => { LY[i.dataset.l] = i.checked; saveLY(); applyLayers(); }; });
+    w.querySelectorAll("input[data-l][type=range]").forEach(i => { i.value = LY[i.dataset.l]; i.oninput = () => { LY[i.dataset.l] = +i.value; saveLY(); applyLayers(); }; });
+    w.querySelector(".reset").onclick = () => { Object.assign(LY, LYDEF); saveLY(); w.querySelectorAll("input[data-l][type=checkbox]").forEach(i => i.checked = !!LY[i.dataset.l]); w.querySelectorAll("input[type=range]").forEach(i => i.value = LY[i.dataset.l]); applyLayers(); };
+  };
+  const clsRows = KL.map((k, i) => `<div class="row"><label><input type="checkbox" class="clsBox" data-c="${i}" ${S.cls.has(i) ? "checked" : ""}><span class="chip" style="background:var(${KV[i]})"></span>${k}</label></div>`).join("");
+  mk("mmap", `<div class="hd">Image</div><div class="row"><label><input type="checkbox" data-l="photo">Photograph of the original</label><div class="sub"><span>opacity</span><input type="range" min="20" max="100" data-l="photoK" aria-label="Photograph opacity"></div></div>
+    <div class="row"><label><input type="checkbox" data-l="mlabels">Located inscriptions</label></div><div class="hd">Classes (both maps)</div>${clsRows}`);
+  mk("wmap", `<div class="hd">Classes (both maps)</div>${clsRows}<div class="hd">Layers</div>
+    <div class="row"><label><input type="checkbox" data-l="others">Other names matched in Pleiades</label></div>
+    <div class="row"><label><input type="checkbox" data-l="arrows">Where the map puts each place</label><div class="sub">grey line from the place to the map's position, best fit</div></div>
+    <div class="row"><label><input type="checkbox" data-l="jer">Jerusalem, the centre</label></div>
+    <div class="row"><label><input type="checkbox" data-l="relief">Shaded relief (Esri)</label><div class="sub"><span>opacity</span><input type="range" min="10" max="80" data-l="reliefK" aria-label="Relief opacity"></div></div>`);
+  document.querySelectorAll(".clsBox").forEach(b => b.onchange = () => { const c = +b.dataset.c; if (b.checked) S.cls.add(c); else S.cls.delete(c); syncCls(); });
+}
+
+/* ---------- selection ---------- */
+function rowOf(k) { const r = byK[k]; if (!r) return null; return r.kind === "loc" ? { kind: "loc", r: LOC[r.i] } : { kind: "oth", r: OTH[r.i] }; }
+function drawSel() {
+  pins.forEach(p => p.remove()); pins = [];
+  const s = S.sel ? rowOf(S.sel) : null;
+  const empty = { type: "FeatureCollection", features: [] };
+  if (mReady) mm.getSource("sel").setData(s && s.kind === "loc" ? { type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: px2ll(s.r[LC.x], s.r[LC.y]) } }] } : empty);
+  if (wReady) { let c = null; if (s) c = s.kind === "loc" ? (s.r[LC.lat] != null ? [s.r[LC.lon], s.r[LC.lat]] : null) : [s.r[OC.lon], s.r[OC.lat]];
+    wm.getSource("sel").setData(c ? { type: "FeatureCollection", features: [{ type: "Feature", properties: {}, geometry: { type: "Point", coordinates: c } }] } : empty); }
+  if (!s || typeof maplibregl === "undefined") return;
+  const name = s.kind === "loc" ? s.r[LC.name] : s.r[OC.name];
+  const pin = (map, c, txt) => { const d = document.createElement("div"); d.className = "pinL"; d.textContent = txt; pins.push(new maplibregl.Marker({ element: d, anchor: "bottom", offset: [0, -12] }).setLngLat(c).addTo(map)); };
+  if (mReady && s.kind === "loc") pin(mm, px2ll(s.r[LC.x], s.r[LC.y]), name);
+  if (wReady) { const c = s.kind === "loc" ? (s.r[LC.lat] != null ? [s.r[LC.lon], s.r[LC.lat]] : null) : [s.r[OC.lon], s.r[OC.lat]]; if (c) pin(wm, c, s.kind === "loc" ? (s.r[LC.ident] || name).split(" (")[0] : name); }
+}
+const KN = c => `<span class="chip" style="background:var(${KV[c]})"></span>${KL[c]}`;
+function side() {
+  const box = document.getElementById("side"); const s = S.sel ? rowOf(S.sel) : null;
+  if (!s) { box.innerHTML = `<div class="sub">Click a dot on either map, or search above. The located inscriptions show on both maps; Pleiades matches show on the modern map only.</div>`; return; }
+  if (s.kind === "loc") { const r = s.r;
+    box.innerHTML = `<div class="sub">${KN(r[LC.cls])} · ${esc(PARTS[r[LC.part]])} · book page ${r[LC.page]}</div><div class="big">${esc(r[LC.name])}</div>
+      <table><tr><td>The book says</td><td><q>${esc(r[LC.evidence])}</q></td></tr>
+      <tr><td>Today</td><td>${r[LC.ident] ? esc(r[LC.ident]) : "no real place: legend, or the book cannot identify it"}</td></tr>
+      ${r[LC.true_km] != null ? `<tr><td>From Jerusalem</td><td>${fmt(r[LC.true_km])} km in reality</td></tr><tr><td>Map vs reality</td><td>${fmt(r[LC.disp_km])} km from where the best-fitting ordinary map would put it</td></tr>` : ""}
+      <tr><td>Located</td><td>${r[LC.conf] === "high" ? "label read clearly" : "with some doubt (worn, crowded or ambiguous)"}</td></tr></table>`; }
+  else { const r = s.r; box.innerHTML = `<div class="sub">${KN(r[OC.cls])} · ${esc(PARTS[r[OC.part]])} · book page ${r[OC.page]}</div><div class="big">${esc(r[OC.name])}</div>
+      <table><tr><td>Matched to</td><td>${esc(r[OC.gaz])} (${esc(r[OC.src])})</td></tr><tr><td>On the map</td><td>not located: shown on the modern map only</td></tr></table>`; }
+}
+function select(k, move = true) {
+  S.sel = k; const s = rowOf(k); if (!s) return;
+  const c = s.kind === "loc" ? s.r[LC.cls] : s.r[OC.cls]; if (!S.cls.has(c)) { S.cls.add(c); syncCls(); }
+  drawSel(); side();
+  if (s.kind === "loc") { if (mReady) mm.flyTo({ center: px2ll(s.r[LC.x], s.r[LC.y]), zoom: Math.max(mm.getZoom(), 3), duration: 800 });
+    if (wReady && s.r[LC.lat] != null) wm.flyTo({ center: [s.r[LC.lon], s.r[LC.lat]], zoom: Math.max(wm.getZoom(), 3.5), duration: 800 }); }
+  else if (wReady) wm.flyTo({ center: [s.r[OC.lon], s.r[OC.lat]], zoom: Math.max(wm.getZoom(), 4), duration: 800 });
+  if (FB) FB.draw();
+  if (move && small()) document.getElementById("atlas").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+window.select = select;
+
+/* ---------- controls ---------- */
+function syncCls() {
+  document.querySelectorAll("#clsRow .btn[data-c]").forEach(b => b.setAttribute("aria-pressed", S.cls.has(+b.dataset.c)));
+  document.querySelectorAll("#clsRow .btn[data-all]").forEach(b => b.setAttribute("aria-pressed", S.cls.size === 4));
+  document.querySelectorAll(".clsBox").forEach(b => b.checked = S.cls.has(+b.dataset.c));
+  refreshData();
+}
+(function clsRow() {
+  const row = document.getElementById("clsRow");
+  const all = document.createElement("button"); all.className = "btn"; all.dataset.all = 1; all.textContent = "All"; row.appendChild(all);
+  all.onclick = () => { S.cls = new Set([0, 1, 2, 3]); syncCls(); };
+  KL.forEach((k, i) => { const b = document.createElement("button"); b.className = "btn"; b.dataset.c = i; b.innerHTML = `<i style="background:var(${KV[i]})"></i>${k}`; row.appendChild(b);
+    b.onclick = () => { if (S.cls.size === 4) S.cls = new Set([i]); else if (S.cls.has(i)) { S.cls.delete(i); if (!S.cls.size) S.cls = new Set([0, 1, 2, 3]); } else S.cls.add(i); syncCls(); }; });
+  syncCls();
+  const lg = document.getElementById("legend");
+  lg.innerHTML = KL.map((k, i) => `<span><i style="background:var(${KV[i]})"></i>${k}</span>`).join("") + `<span><i style="background:transparent;border:2px solid var(--red)"></i>Jerusalem and the selected place</span><span><i class="ln" style="border-color:var(--muted)"></i>Map's position (Map layers)</span>`;
+})();
+(function focusRow() {
+  const row = document.getElementById("focusRow");
+  const F = [["Whole world", null, null], ["Jerusalem", "Jerusalem", null], ["British Isles", "Londonia", [[-11, 49.5], [2.5, 59]]], ["Rome", "Roma", null], ["Babylon", "Babel Tttkris", null], ["India", "Polibrota", [[60, 5], [92, 36]]], ["Egypt", "Alexandria", [[24, 22], [36, 32]]]];
+  F.forEach(([n, key, b]) => { const x = document.createElement("button"); x.className = "btn"; x.textContent = n; row.appendChild(x);
+    x.onclick = () => {
+      if (!key) { S.sel = null; drawSel(); side(); if (mReady) mm.fitBounds(MBOUNDS, { padding: 6, duration: 800 }); if (wReady) wm.flyTo({ center: small() ? [40, 35] : [42, 36], zoom: small() ? 1.15 : 1.75, duration: 800 }); if (FB) FB.draw(); return; }
+      const r = LOC.find(r => r[LC.name] === key); if (r) select(r[LC.k]);
+      if (b && wReady) setTimeout(() => wm.fitBounds(b, { padding: 20, duration: 800 }), 50);
+    }; });
+})();
+(function search() {
+  const q = document.getElementById("q"), sug = document.getElementById("sug");
+  const IDX = LOC.map(r => ({ k: r[LC.k], t: r[LC.name], s: (r[LC.ident] || "legend") + " · on both maps", h: (r[LC.name] + " " + (r[LC.ident] || "") + " " + r[LC.evidence]).toLowerCase() }))
+    .concat(OTH.filter(r => !LOC.some(l => l[LC.k] === r[OC.k])).map(r => ({ k: r[OC.k], t: r[OC.name], s: r[OC.gaz] + " · modern map only", h: (r[OC.name] + " " + r[OC.gaz]).toLowerCase() })));
+  let cur = [], ai = -1;
+  const show = () => { sug.innerHTML = cur.map((c, i) => `<li role="option" aria-selected="${i === ai}" data-i="${i}">${esc(c.t)} <span>${esc(c.s)}</span></li>`).join(""); sug.style.display = cur.length ? "block" : "none";
+    sug.querySelectorAll("li").forEach(li => li.onmousedown = e => { e.preventDefault(); pick(cur[+li.dataset.i]); }); };
+  const pick = c => { if (!c) return; q.value = c.t; sug.style.display = "none"; select(c.k); };
+  q.addEventListener("input", () => { const v = q.value.trim().toLowerCase(); ai = -1; if (v.length < 2) { cur = []; show(); return; }
+    cur = IDX.filter(x => x.h.includes(v)).sort((a, b) => (a.t.toLowerCase().startsWith(v) ? 0 : 1) - (b.t.toLowerCase().startsWith(v) ? 0 : 1)).slice(0, 12); show(); });
+  q.addEventListener("keydown", e => { if (e.key === "ArrowDown") { ai = Math.min(cur.length - 1, ai + 1); show(); e.preventDefault(); } else if (e.key === "ArrowUp") { ai = Math.max(0, ai - 1); show(); e.preventDefault(); }
+    else if (e.key === "Enter") { pick(cur[ai >= 0 ? ai : 0]); } else if (e.key === "Escape") { sug.style.display = "none"; } });
+  q.addEventListener("blur", () => setTimeout(() => sug.style.display = "none", 150));
+})();
+
+/* ---------- fallback: no map library ---------- */
+function fallback() {
+  const mbox = document.getElementById("mmap"), wbox = document.getElementById("wmap");
+  [mbox, wbox].forEach(b => b.querySelector(".loading")?.remove());
+  const img = new Image(); img.src = IMG.miller;
+  const mk = (box, note) => { const cv = document.createElement("canvas"); cv.className = "fallback"; box.appendChild(cv); const n = document.createElement("div"); n.className = "fbnote"; n.textContent = note; box.appendChild(n); return cv; };
+  const mc = mk(mbox, "The map library did not load, so this is a still view. Click a dot to select a place."), wc = mk(wbox, "Still view of the modern map (Natural Earth). Click a dot to select a place.");
+  const geo = { lo0: -25, lo1: 105, la0: -2, la1: 68 };
+  let mT = null, wT = null;
+  const draw = () => {
+    const cc = KC(), d = devicePixelRatio || 1;
+    // medieval
+    { const W = mbox.clientWidth, H = mbox.clientHeight; mc.width = W * d; mc.height = H * d; const x = mc.getContext("2d"); x.setTransform(d, 0, 0, d, 0, 0);
+      x.fillStyle = css("--panel"); x.fillRect(0, 0, W, H); const k = Math.min(W / IMG.w, H / IMG.h), ox = (W - IMG.w * k) / 2, oy = (H - IMG.h * k) / 2; mT = { k, ox, oy };
+      if (img.complete && img.naturalWidth) x.drawImage(img, ox, oy, IMG.w * k, IMG.h * k);
+      LOC.forEach(r => { if (!S.cls.has(r[LC.cls])) return; x.beginPath(); x.arc(ox + r[LC.x] * k, oy + r[LC.y] * k, r[LC.k] === S.sel ? 6 : 3.5, 0, 7); x.fillStyle = cc[r[LC.cls]]; x.fill(); x.strokeStyle = r[LC.k] === S.sel ? "#B23A2A" : "#fff"; x.lineWidth = r[LC.k] === S.sel ? 3 : 1; x.stroke(); }); }
+    // modern
+    { const W = wbox.clientWidth, H = wbox.clientHeight; wc.width = W * d; wc.height = H * d; const x = wc.getContext("2d"); x.setTransform(d, 0, 0, d, 0, 0);
+      const k = Math.min(W / (geo.lo1 - geo.lo0), H / (geo.la1 - geo.la0)), ox = (W - k * (geo.lo1 - geo.lo0)) / 2, oy = (H - k * (geo.la1 - geo.la0)) / 2; wT = { k, ox, oy };
+      const P = (lo, la) => [ox + (lo - geo.lo0) * k, oy + (geo.la1 - la) * k];
+      x.fillStyle = css("--sea"); x.fillRect(0, 0, W, H); x.fillStyle = css("--land");
+      WORLD.features.forEach(f => { const g = f.geometry, polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates; polys.forEach(pg => { x.beginPath(); pg[0].forEach((c, j) => { const [a, b] = P(c[0], c[1]); j ? x.lineTo(a, b) : x.moveTo(a, b); }); x.fill(); }); });
+      if (LY.others) OTH.forEach(r => { if (!S.cls.has(r[OC.cls])) return; const [a, b] = P(r[OC.lon], r[OC.lat]); x.globalAlpha = .55; x.fillStyle = cc[r[OC.cls]]; x.beginPath(); x.arc(a, b, 2, 0, 7); x.fill(); x.globalAlpha = 1; });
+      LOC.forEach(r => { if (r[LC.lat] == null || !S.cls.has(r[LC.cls])) return; const [a, b] = P(r[LC.lon], r[LC.lat]); x.beginPath(); x.arc(a, b, r[LC.k] === S.sel ? 6 : 3.5, 0, 7); x.fillStyle = cc[r[LC.cls]]; x.fill(); x.strokeStyle = r[LC.k] === S.sel ? "#B23A2A" : "#fff"; x.lineWidth = r[LC.k] === S.sel ? 3 : 1; x.stroke(); }); }
+  };
+  const hit = (e, box, geoMode) => { const b = box.getBoundingClientRect(), mx = e.clientX - b.left, my = e.clientY - b.top; let best = null, bd = 12;
+    LOC.forEach(r => { if (!S.cls.has(r[LC.cls])) return; let px, py; if (geoMode) { if (r[LC.lat] == null) return; px = wT.ox + (r[LC.lon] - geo.lo0) * wT.k; py = wT.oy + (geo.la1 - r[LC.lat]) * wT.k; } else { px = mT.ox + r[LC.x] * mT.k; py = mT.oy + r[LC.y] * mT.k; }
+      const dd = Math.hypot(px - mx, py - my); if (dd < bd) { bd = dd; best = r[LC.k]; } }); if (best != null) select(best, false); };
+  mc.addEventListener("click", e => hit(e, mbox, false)); wc.addEventListener("click", e => hit(e, wbox, true));
+  img.onload = draw; draw(); new ResizeObserver(draw).observe(mbox); new ResizeObserver(draw).observe(wbox); redraws.push(draw);
+  FB = { draw };
+}
+
+/* ---------- charts ---------- */
+function partChart() {
+  const box = document.getElementById("partChart"); const P = PARTS.filter(p => p !== "Frame and ocean"); const D = R.part_class;
+  resp(box, (W, sm) => { const lw = sm ? 112 : 150, rh = 34, top = 6, H = top + P.length * rh + 26, svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Names by part of the map and class" }, box);
+    const mx = Math.max(...P.map(p => D[p].n)), x = v => lw + v / mx * (W - lw - 46), cc = KC();
+    P.forEach((p, i) => { const y = top + i * rh; lbl(svg, lw - 8, y + rh / 2 + 4, p, "lab", "end"); let a = 0;
+      KL.forEach((k, j) => { const v = D[p][k]; if (!v) return; const r = el("rect", { x: x(a), y: y + 5, width: Math.max(0, x(a + v) - x(a)), height: rh - 12, fill: cc[j] }, svg);
+        r.addEventListener("mousemove", e => showTip(`<b>${esc(p)}</b><br>${k}: ${v} of ${D[p].n} (${Math.round(D[p][k + "_pct"])}%)`, e.clientX, e.clientY)); r.addEventListener("mouseleave", hideTip); a += v; });
+      lbl(svg, x(D[p].n) + 6, y + rh / 2 + 4, fmt(D[p].n), "lab b"); });
+    [0, 100, 200, 300].filter(v => v <= mx).forEach(v => { el("line", { x1: x(v), x2: x(v), y1: top, y2: top + P.length * rh, stroke: css("--rule") }, svg).parentNode.insertBefore(svg.lastChild, svg.firstChild); lbl(svg, x(v), H - 6, v, "lab s m", "middle"); }); });
+  document.getElementById("partLegend").innerHTML = KL.map((k, i) => `<span><i class="sq" style="background:var(${KV[i]})"></i>${k}</span>`).join("");
+}
+function classChart() {
+  const box = document.getElementById("classChart"); const C = R.classes;
+  resp(box, (W, sm) => { const H = 66, svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Shares of the four classes" }, box); const tot = KL.reduce((a, k) => a + C[k].n, 0), cc = KC(); let a = 0;
+    KL.forEach((k, i) => { const w = C[k].n / tot * W; const r = el("rect", { x: a, y: 4, width: w - 1, height: 30, fill: cc[i] }, svg);
+      r.addEventListener("mousemove", e => showTip(`<b>${k}</b><br>${fmt(C[k].n)} names, ${Math.round(C[k].pct)}%`, e.clientX, e.clientY)); r.addEventListener("mouseleave", hideTip);
+      const t = `${k} ${Math.round(C[k].pct)}%`; if (w > (sm ? 92 : 120)) lbl(svg, a + 6, 24, t, "lab b").setAttribute("fill", "#fff"); else lbl(svg, a + w / 2, 52 + (i % 2) * 0, `${Math.round(C[k].pct)}%`, "lab s", "middle"); a += w; }); });
+}
+const REGS = SITE.regions.map(r => r.region);
+const RCOL = ["#2E8A6E", "#5D8F9E", "#2F5FA7", "#6E4C9A", "#B07A12", "#9C6B3A", "#C2412D", "#8E3B2E", "#D46A8C", "#3B7DD8", "#7A9A3A", "#E0A11B", "#3B3B3B"];
+function regionOf(r) { return REGS.indexOf(r[LC.region]); }
+function brgChart() {
+  const box = document.getElementById("brgChart"); const pts = LOC.filter(r => r[LC.true_km] != null && r[LC.true_km] > 1);
+  // bearings recomputed here from the data, east up on the map
+  const JX = SITE.jer_px[0], JY = SITE.jer_px[1], toR = Math.PI / 180;
+  const tb = r => { const p1 = SITE.jer[0] * toR, p2 = r[LC.lat] * toR, dl = (r[LC.lon] - SITE.jer[1]) * toR; return (Math.atan2(Math.sin(dl) * Math.cos(p2), Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / toR + 360) % 360; };
+  const mb = r => (Math.atan2(-(r[LC.y] - JY), -(r[LC.x] - JX)) / toR + 360) % 360;
+  resp(box, (W, sm) => { const H = Math.min(440, W * .78), ml = 44, mb_ = 34, svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "True against map bearing from Jerusalem" }, box);
+    const x = v => ml + v / 360 * (W - ml - 10), y = v => H - mb_ - v / 360 * (H - mb_ - 8);
+    [0, 90, 180, 270, 360].forEach(v => { el("line", { x1: x(v), x2: x(v), y1: y(0), y2: y(360), stroke: css("--rule") }, svg); el("line", { x1: x(0), x2: x(360), y1: y(v), y2: y(v), stroke: css("--rule") }, svg);
+      const n = { 0: "N", 90: "E", 180: "S", 270: "W", 360: "N" }[v]; lbl(svg, x(v), H - 16, n, "lab s m", "middle"); lbl(svg, ml - 8, y(v) + 4, n, "lab s m", "end"); });
+    el("line", { x1: x(0), y1: y(0), x2: x(360), y2: y(360), stroke: css("--muted"), "stroke-dasharray": "4 4" }, svg);
+    lbl(svg, x(180), H - 2, "true bearing from Jerusalem", "lab s m", "middle");
+    const t = lbl(svg, 12, y(180), "bearing on the map", "lab s m", "middle"); t.setAttribute("transform", `rotate(-90 12 ${y(180)})`);
+    pts.forEach(r => { let a = tb(r), b = mb(r); if (b - a > 180) b -= 360; if (a - b > 180) b += 360; if (b < 0 || b > 360) return; const c = el("circle", { cx: x(a), cy: y(b), r: 4.2, fill: RCOL[regionOf(r)], "fill-opacity": .85, stroke: css("--card"), "stroke-width": .8 }, svg);
+      c.addEventListener("mousemove", e => showTip(`<b>${esc(r[LC.name])}</b> · ${esc((r[LC.ident] || "").split(" (")[0])}<br>true ${Math.round(a)}°, map ${Math.round(b)}°`, e.clientX, e.clientY)); c.addEventListener("mouseleave", hideTip); c.style.cursor = "pointer"; c.addEventListener("click", () => select(r[LC.k])); }); });
+  document.getElementById("regLegend").innerHTML = REGS.map((g, i) => `<span><i style="background:${RCOL[i]}"></i>${esc(g)}</span>`).join("");
+}
+function distChart() {
+  const box = document.getElementById("distChart"); const pts = LOC.filter(r => r[LC.true_km] != null && r[LC.true_km] > 1);
+  const JX = SITE.jer_px[0], JY = SITE.jer_px[1], RAD = SITE.radius_px;
+  resp(box, (W, sm) => { const H = Math.min(400, W * .7), ml = 44, mb = 36, svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "True distance against map distance from Jerusalem" }, box);
+    const lx = v => Math.log10(v), x0 = lx(5), x1 = lx(7000), x = v => ml + (lx(v) - x0) / (x1 - x0) * (W - ml - 10), y = v => H - mb - v / 1.05 * (H - mb - 8);
+    [10, 100, 1000, 5000].forEach(v => { el("line", { x1: x(v), x2: x(v), y1: y(0), y2: y(1.05), stroke: css("--rule") }, svg); lbl(svg, x(v), H - 18, fmt(v) + " km", "lab s m", "middle"); });
+    [0, .25, .5, .75, 1].forEach(v => { el("line", { x1: x(5), x2: x(7000), y1: y(v), y2: y(v), stroke: css("--rule") }, svg); lbl(svg, ml - 6, y(v) + 4, Math.round(v * 100) + "%", "lab s m", "end"); });
+    lbl(svg, x(1000), y(1) - 5, "edge of the world", "lab s m", "middle");
+    lbl(svg, (ml + W) / 2, H - 2, "true distance from Jerusalem (log scale)", "lab s m", "middle");
+    pts.forEach(r => { const f = Math.hypot(r[LC.x] - JX, r[LC.y] - JY) / RAD; const c = el("circle", { cx: x(Math.max(5, r[LC.true_km])), cy: y(Math.min(1.05, f)), r: 4.2, fill: RCOL[regionOf(r)], "fill-opacity": .85, stroke: css("--card"), "stroke-width": .8 }, svg);
+      c.addEventListener("mousemove", e => showTip(`<b>${esc(r[LC.name])}</b> · ${esc((r[LC.ident] || "").split(" (")[0])}<br>${fmt(r[LC.true_km])} km away; ${Math.round(f * 100)}% of the way to the edge`, e.clientX, e.clientY)); c.addEventListener("mouseleave", hideTip); c.style.cursor = "pointer"; c.addEventListener("click", () => select(r[LC.k])); }); });
+}
+function stretchChart() {
+  const box = document.getElementById("stretchChart"); const D = SITE.regions.filter(r => r.stretch != null).sort((a, b) => b.stretch - a.stretch);
+  resp(box, (W, sm) => { const lw = sm ? 150 : 200, rh = 28, H = 8 + D.length * rh + 24, svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Relative scale of each region" }, box);
+    const mx = Math.max(...D.map(d => d.stretch)) * 1.08, lx = v => Math.log(v), x = v => lw + (lx(v) - lx(.25)) / (lx(mx) - lx(.25)) * (W - lw - 40);
+    el("line", { x1: x(1), x2: x(1), y1: 4, y2: 8 + D.length * rh, stroke: css("--fg") }, svg); lbl(svg, x(1), H - 6, "average scale", "lab s m", "middle");
+    D.forEach((d, i) => { const y = 8 + i * rh; lbl(svg, lw - 8, y + rh / 2 + 4, d.region, "lab", "end"); const a = Math.min(x(1), x(d.stretch)), b = Math.max(x(1), x(d.stretch));
+      const r = el("rect", { x: a, y: y + 5, width: Math.max(1, b - a), height: rh - 10, fill: d.stretch >= 1 ? css("--red") : css("--cla"), "fill-opacity": .85 }, svg);
+      r.addEventListener("mousemove", e => showTip(`<b>${esc(d.region)}</b><br>drawn ${d.stretch.toFixed(2)} times the average scale<br>${d.n} located places, ${d.pairs} pairs`, e.clientX, e.clientY)); r.addEventListener("mouseleave", hideTip);
+      lbl(svg, d.stretch >= 1 ? b + 5 : a - 5, y + rh / 2 + 4, "×" + d.stretch.toFixed(d.stretch < 1 ? 2 : 1), "lab b", d.stretch >= 1 ? "start" : "end"); }); });
+}
+function regTable() {
+  const t = document.getElementById("regTable"); const D = SITE.regions;
+  const B = { "British Isles": [[-11, 49.5], [2.5, 59]], "Iceland and Norway": [[-25, 55], [20, 67]], "France": [[-5, 42.5], [8, 51]], "Spain": [[-10, 35.5], [3.5, 44]], "Italy": [[6, 37], [19, 46.5]],
+    "Central Europe": [[5, 47], [17, 55]], "Greece and Constantinople": [[19, 36.5], [31, 42.5]], "Holy Land": [[33.5, 29.5], [37, 34]], "Syria and Anatolia": [[26, 33], [40, 41.5]],
+    "Egypt and Sinai": [[25, 22], [37, 32]], "North Africa": [[-7, 29], [24, 38]], "Mesopotamia and Persia": [[38, 28], [56, 41]], "India and Central Asia": [[60, 5], [92, 42]] };
+  t.innerHTML = `<thead><tr><th>Region</th><th class="r">Located</th><th class="r">From Jerusalem</th><th class="r">Direction error</th><th class="r">Drawn at</th></tr></thead><tbody>` +
+    D.map(d => `<tr data-k="${esc(d.region)}"><td><span class="chip" style="background:${RCOL[REGS.indexOf(d.region)]}"></span>${esc(d.region)}</td><td class="r">${d.n}</td><td class="r">${fmt(d.median_true_km)} km</td><td class="r">${d.median_abs_brg_err}°</td><td class="r">${d.stretch == null ? "too few" : "×" + d.stretch.toFixed(2)}</td></tr>`).join("") + "</tbody>";
+  t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const g = tr.dataset.k; const rs = LOC.filter(r => r[LC.region] === g); if (!rs.length) return;
+    if (wReady && B[g]) wm.fitBounds(B[g], { padding: 20, duration: 800 });
+    if (mReady) { const xs = rs.map(r => r[LC.x]), ys = rs.map(r => r[LC.y]); const p0 = px2ll(Math.min(...xs) - 60, Math.max(...ys) + 60), p1 = px2ll(Math.max(...xs) + 60, Math.min(...ys) - 60); mm.fitBounds([p0, p1], { padding: 20, duration: 800 }); }
+    document.getElementById("atlas").scrollIntoView({ behavior: "smooth", block: "start" }); });
+}
+
+/* ---------- theme ---------- */
+document.getElementById("theme").onclick = () => { const r = document.documentElement; r.dataset.theme = isDark() ? "light" : "dark";
+  const P = pal();
+  if (wReady) { wm.setPaintProperty("bg", "background-color", P.sea); wm.setPaintProperty("land", "fill-color", P.land); wm.setPaintProperty("borders", "line-color", P.border); ["pts", "oth"].forEach(l => wm.setPaintProperty(l, "circle-color", colExpr())); }
+  if (mReady) { mm.setPaintProperty("bg", "background-color", P.panel); mm.setPaintProperty("pts", "circle-color", colExpr()); }
+  redraws.forEach(f => f()); };
+
+startMaps(); side(); partChart(); classChart(); brgChart(); distChart(); stretchChart(); regTable();
+</script>
+/*FULLSCREEN*/
+</body>
+</html>

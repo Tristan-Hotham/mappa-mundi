@@ -1,0 +1,165 @@
+name,page,x,y,conf,note
+Paradisi porte,25,1880,1000,high,walled circular island of Paradise at the top of the map
+Arbor Sicca,25,2005,1065,medium,the dry tree beside Paradise
+Gigantes,27,2110,1050,high,figures labelled Gigantes
+Enos,27,1930,1110,high,town below Paradise (Enos civitas antiquissima)
+Cotomare,27,2310,1020,medium,Coroniare portus
+Patalus,28,2390,1040,medium,portus patalus
+Pigmei,28,1730,1155,high,figures labelled Pigmei
+Nicea,28,1880,1215,medium,Nicea civitas on the Pasma
+Bucephala,28,2010,1210,medium,
+Aree Alexandri,28,2160,1170,high,the altars of Alexander
+Avalerion,30,1800,1300,high,pair of birds
+Cassica,30,1620,1340,medium,Cassica civitas quam Cirus destruxit
+Polibrota,32,2470,1250,high,Palibothra civitas quam inhabitant Prasia gens
+Zimarim,33,2530,1310,high,Zimarim portus
+Tapbana,34,2810,1290,high,large island in the scarlet Indian Ocean
+Alexandria,36,1570,1440,medium,Alexandria in the far east of Asia
+Samarcan,52,1240,1300,high,Samarcan civitas
+Caspia,52,1010,1555,high,Caspia civitas
+Magog,49,430,1700,medium,the enclosed peninsula of Gog and Magog (legend text block)
+Carimaspi,61,330,2040,medium,Arimaspi fighting griffins
+Griphe,61,520,2595,high,
+Caspie Portee,64,850,2040,high,Porte Caspie
+Persepolis,72,2070,1460,high,Persepolis caput Persidis
+Rages,71,1680,1460,high,Rages civitas
+Carax,72,2490,1540,high,Carax oppidum
+Ninevee,73,1540,1750,high,Ninive
+Samosaka,73,1650,1830,high,Samosaka civitas
+Nisibi,74,1760,1880,high,Nisibi civitas
+Babel Tttkris,74,1880,1800,high,the Tower of Babel
+Babylonia,74,1960,1600,medium,the Babylon legend beside the tower
+Hur,74,2260,1600,high,Hur Habrae patria in Caldea
+Area Noe,69,1290,2030,high,Noah's Ark on the mountains of Armenia
+Tarsus,68,1450,2320,high,Tharsus civitas
+Ephesus,68,1460,2505,high,Ephesus civitas
+Antiochia,68,1340,2425,medium,Antiochie civitas (Pisidia)
+Troja,69,1420,2700,medium,
+Nicomedia,69,1310,2680,medium,
+Calcidonia,69,1300,2660,medium,
+Antiochia,76,1450,2210,high,Antiochia civitas (Syria)
+Laodiciam,76,1615,2345,high,
+Tripolis,76,1615,2505,high,
+Beritus,76,1610,2610,high,
+Damascus,77,2060,2080,high,Damascus civitas
+Sodom,77,2390,2005,medium,
+Loth uxor,77,2240,1990,high,Lot's wife
+Petra,77,2290,1830,medium,
+Nazaret,78,1820,2310,high,
+Cesarea Philippi,78,1740,2370,high,
+Tholomaida,78,1700,2660,high,
+Carmelum,78,1735,2600,medium,Mons Carmelus
+Jerusalem,79,1900,2535,high,the walled circle at the centre of the map
+Bethleem,79,1950,2610,high,
+Gaza,79,2075,2590,high,
+Gerara,79,2180,2570,high,
+Ascalon,78,2005,2720,high,
+Bersabee,80,2190,2350,high,
+Ebron,80,2060,2400,medium,
+Jerico,80,2270,2195,medium,
+Sinay,81,2525,1765,high,Mons Sinay
+Phenix,85,2620,1900,high,
+Babylonia,86,2930,2165,high,Babilonia in Egypt
+Orrea Josepbi,86,2560,2310,high,the granaries of Joseph
+Mandragora,87,2700,2400,high,
+Alexandria,88,2610,2690,high,Alexandria civitas
+Siene,84,3270,2430,high,Siene
+Berenice,84,2770,1715,medium,civitas Berenice
+Cirene,92,2310,2800,high,
+Berenice,92,2830,2850,high,
+Aree Philenoram,92,2950,2905,high,
+Apollonia,92,3040,2820,high,civitas Apollonia
+Ptholomaida,92,3220,2820,high,
+Arsinoe,92,3280,2820,high,
+Leptis Magna,93,2870,2960,high,
+Sabrata,93,2330,2895,medium,
+Cartago,95,2420,3320,high,Cartago magna
+Suffetula,96,2780,3165,high,
+Ippone,97,2470,3540,high,Ypone regium civitas Augustini episcopi
+Cesarea,99,2440,3710,medium,
+Septem Montes,99,2280,4000,high,
+Scinopodes,102,3430,2130,high,
+Blemee,103,3300,3150,medium,man with eyes and mouth in his breast
+Fortunate,106,2400,4100,medium,the Fortunate Isles
+Gades,112,2045,4030,high,Gades Herculis
+Calpel,99,2040,4065,high,the Pillars of Hercules at the strait
+Laborintus,116,2215,3245,high,the labyrinth on Crete
+Caribdis,116,2045,3490,high,
+Messana,116,2125,3480,high,
+Venicia,118,1610,3215,high,
+Constantinopolis,136,1150,2815,high,
+Thessalonica,135,1490,2950,high,
+Athene,134,1640,2940,medium,
+Roma,130,1900,3320,high,Roma caput mundi
+Neapolis,131,2005,3240,high,
+Salema,131,2000,3215,high,
+Puteolis,131,2010,3260,high,
+Bononia,130,1720,3380,high,Bononia (Italy)
+Arimmuin,130,1630,3365,medium,
+Vercellis,130,1755,3470,medium,
+Genua,131,1645,3540,medium,
+Arelas,148,1920,3690,high,
+Narbona,143,1840,3700,high,
+Tolosa,147,1490,3790,medium,
+Burdegala,147,1330,3800,medium,
+Bayona,148,1340,3840,high,
+Compostella,125,1395,3895,high,
+Iacobi Templum,125,1450,3920,high,Templum sancti Iacobi
+Toletum,126,1605,3880,high,
+Corduba,126,1980,4110,high,
+Basella,126,1790,4020,high,
+Terracona,126,1830,3840,high,
+Ilema,126,1755,3920,high,Ilerda
+Parisius,145,1420,3545,high,
+Remis,145,1360,3580,high,
+Rotomagum,145,1215,3610,high,
+Carnotum,146,1520,3650,high,
+Cenomani,146,1440,3655,high,
+Aurelianum,146,1635,3655,medium,
+Turonis,147,1580,3695,medium,
+Limogena,147,1675,3725,high,
+Avernis,147,1610,3700,high,
+Augustudunum,145,1690,3600,medium,
+Remesburgh,154,1080,3110,high,
+Braga,152,720,2985,high,Braga metropolis Boemariorum
+Brema,152,650,3290,high,
+Ysland,162,410,2970,high,
+Fareie,162,450,2970,high,
+Orcades,161,420,3120,high,
+Noreya,158,420,2840,high,
+Ganzmir,158,300,2810,high,the Norwegian on skis
+Cinocephales,159,420,2590,high,
+S. Andr,171,690,3425,high,
+Berwic,171,725,3475,high,
+Rokesburg,171,745,3500,high,
+Edenburgh,171,780,3455,medium,
+Castello Novo,169,825,3435,medium,
+Carlua,169,820,3490,high,
+Durem,169,860,3510,high,
+Eboracum,169,882,3460,high,
+Kircham,169,898,3435,medium,
+Cestria,169,905,3550,high,
+Snotingbam,169,940,3570,high,
+Lincoln,168,990,3540,high,
+Ely,168,1020,3570,high,
+Norhanton,168,1008,3605,medium,
+Colcestria,168,1100,3595,high,
+Londonia,168,1080,3655,high,
+Oxeford,168,1030,3662,high,
+Wircestr,169,1035,3715,medium,
+Hfoid,169,1010,3760,high,
+Glearum,169,1055,3760,medium,
+Bathe,170,1072,3758,medium,
+Glestonia,170,1085,3790,medium,
+Canturia,170,1145,3738,medium,
+Wintona,170,1160,3760,high,
+Cadan,170,1150,3795,high,
+Excestria,170,1180,3830,medium,
+Carnarvan,171,860,3570,high,
+Cunwey,171,880,3630,high,
+Snawedon,171,810,3580,high,
+Man,172,795,3530,high,
+Divelin,172,780,3625,medium,
+Bencur,172,760,3690,medium,
+Celdara,172,980,3850,high,
+Arhmata,172,870,3745,high,Ardmacha civitas sancti Patricii

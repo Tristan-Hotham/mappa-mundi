@@ -1,0 +1,599 @@
+{
+ "source": {
+  "n": 1025,
+  "n_named": 985,
+  "n_frame": 40,
+  "first_page": 6,
+  "last_page": 173,
+  "book_year": 1873,
+  "book_pages": 174,
+  "pleiades_version": "4.1"
+ },
+ "parts": {
+  "Asia": {
+   "n": 371,
+   "pct": 36.2
+  },
+  "Africa": {
+   "n": 117,
+   "pct": 11.41
+  },
+  "Europe": {
+   "n": 324,
+   "pct": 31.61
+  },
+  "British Isles": {
+   "n": 83,
+   "pct": 8.1
+  },
+  "Seas and islands": {
+   "n": 105,
+   "pct": 10.24
+  },
+  "Frame and ocean": {
+   "n": 25,
+   "pct": 2.44
+  }
+ },
+ "classes": {
+  "Biblical": {
+   "n": 93,
+   "pct": 9.44
+  },
+  "Classical": {
+   "n": 714,
+   "pct": 72.49
+  },
+  "Medieval": {
+   "n": 121,
+   "pct": 12.28
+  },
+  "Legendary": {
+   "n": 57,
+   "pct": 5.79
+  }
+ },
+ "part_class": {
+  "Asia": {
+   "Biblical": 93,
+   "Classical": 225,
+   "Medieval": 6,
+   "Legendary": 36,
+   "n": 360,
+   "Biblical_pct": 25.83,
+   "Classical_pct": 62.5,
+   "Medieval_pct": 1.67,
+   "Legendary_pct": 10.0
+  },
+  "Africa": {
+   "Biblical": 0,
+   "Classical": 103,
+   "Medieval": 0,
+   "Legendary": 11,
+   "n": 114,
+   "Biblical_pct": 0.0,
+   "Classical_pct": 90.35,
+   "Medieval_pct": 0.0,
+   "Legendary_pct": 9.65
+  },
+  "Europe": {
+   "Biblical": 0,
+   "Classical": 279,
+   "Medieval": 39,
+   "Legendary": 3,
+   "n": 321,
+   "Biblical_pct": 0.0,
+   "Classical_pct": 86.92,
+   "Medieval_pct": 12.15,
+   "Legendary_pct": 0.93
+  },
+  "British Isles": {
+   "Biblical": 0,
+   "Classical": 5,
+   "Medieval": 76,
+   "Legendary": 2,
+   "n": 83,
+   "Biblical_pct": 0.0,
+   "Classical_pct": 6.02,
+   "Medieval_pct": 91.57,
+   "Legendary_pct": 2.41
+  },
+  "Seas and islands": {
+   "Biblical": 0,
+   "Classical": 100,
+   "Medieval": 0,
+   "Legendary": 5,
+   "n": 105,
+   "Biblical_pct": 0.0,
+   "Classical_pct": 95.24,
+   "Medieval_pct": 0.0,
+   "Legendary_pct": 4.76
+  }
+ },
+ "types": {
+  "place or people": 640,
+  "river": 139,
+  "island": 108,
+  "mountain": 69,
+  "sea": 10,
+  "lake": 7,
+  "promontory": 6,
+  "gulf": 5,
+  "province": 1
+ },
+ "placed": {
+  "n_real": 928,
+  "n": 337,
+  "pct": 36.31,
+  "book": 143,
+  "pleiades": 194,
+  "pleiades_close": 39,
+  "pleiades_rough": 32,
+  "ne": 0,
+  "rejected": 78
+ },
+ "placed_parts": {
+  "Asia": {
+   "n": 324,
+   "placed": 115,
+   "pct": 35.49
+  },
+  "Africa": {
+   "n": 103,
+   "placed": 27,
+   "pct": 26.21
+  },
+  "Europe": {
+   "n": 318,
+   "placed": 118,
+   "pct": 37.11
+  },
+  "British Isles": {
+   "n": 81,
+   "placed": 37,
+   "pct": 45.68
+  },
+  "Seas and islands": {
+   "n": 100,
+   "placed": 40,
+   "pct": 40.0
+  }
+ },
+ "fit": {
+  "rotation_deg": -97.5,
+  "km_per_px": 1.963,
+  "km_per_radius": 3014,
+  "median_disp_km": 516,
+  "mean_disp_km": 707,
+  "r2": 0.836,
+  "up_bearing": 97.5
+ },
+ "dist": {
+  "spearman": 0.9,
+  "n": 140,
+  "max_true_km": 5398,
+  "far_name": "Sri Lanka (Taprobane, Ceylon)",
+  "near_frac_pct": 20,
+  "far_frac_pct": 93,
+  "near_km": 128,
+  "far_km": 3747,
+  "km_ratio": 29.3,
+  "frac_ratio": 4.8
+ },
+ "dist_bins": [
+  {
+   "lo": 0,
+   "hi": 500,
+   "n": 21,
+   "median_frac": 0.195,
+   "median_km": 128
+  },
+  {
+   "lo": 500,
+   "hi": 1500,
+   "n": 24,
+   "median_frac": 0.483,
+   "median_km": 1136
+  },
+  {
+   "lo": 1500,
+   "hi": 3000,
+   "n": 23,
+   "median_frac": 0.652,
+   "median_km": 2349
+  },
+  {
+   "lo": 3000,
+   "hi": 6000,
+   "n": 72,
+   "median_frac": 0.928,
+   "median_km": 3747
+  }
+ ],
+ "bearing": {
+  "median_abs_err": 19,
+  "within45_pct": 81.43,
+  "within90_pct": 100.0,
+  "n": 140,
+  "mean_err": -14
+ },
+ "regions": {
+  "British Isles": {
+   "region": "British Isles",
+   "n": 35,
+   "stretch": 1.5,
+   "pairs": 542,
+   "median_true_km": 3801,
+   "median_map_frac": 0.955,
+   "median_abs_brg_err": 8,
+   "median_disp_km": 249,
+   "mean_true_brg": 320,
+   "mean_map_brg": 312
+  },
+  "Iceland and Norway": {
+   "region": "Iceland and Norway",
+   "n": 3,
+   "stretch": null,
+   "pairs": 3,
+   "median_true_km": 4498,
+   "median_map_frac": 0.986,
+   "median_abs_brg_err": 12,
+   "median_disp_km": 1325,
+   "mean_true_brg": 333,
+   "mean_map_brg": 345
+  },
+  "France": {
+   "region": "France",
+   "n": 15,
+   "stretch": 1.27,
+   "pairs": 102,
+   "median_true_km": 3325,
+   "median_map_frac": 0.782,
+   "median_abs_brg_err": 24,
+   "median_disp_km": 384,
+   "mean_true_brg": 310,
+   "mean_map_brg": 287
+  },
+  "Spain": {
+   "region": "Spain",
+   "n": 8,
+   "stretch": 0.9,
+   "pairs": 25,
+   "median_true_km": 3717,
+   "median_map_frac": 0.957,
+   "median_abs_brg_err": 24,
+   "median_disp_km": 344,
+   "mean_true_brg": 294,
+   "mean_map_brg": 274
+  },
+  "Italy": {
+   "region": "Italy",
+   "n": 10,
+   "stretch": 1.35,
+   "pairs": 42,
+   "median_true_km": 2352,
+   "median_map_frac": 0.537,
+   "median_abs_brg_err": 34,
+   "median_disp_km": 388,
+   "mean_true_brg": 307,
+   "mean_map_brg": 274
+  },
+  "Central Europe": {
+   "region": "Central Europe",
+   "n": 3,
+   "stretch": null,
+   "pairs": 3,
+   "median_true_km": 2720,
+   "median_map_frac": 0.822,
+   "median_abs_brg_err": 3,
+   "median_disp_km": 804,
+   "mean_true_brg": 324,
+   "mean_map_brg": 331
+  },
+  "Greece and Constantinople": {
+   "region": "Greece and Constantinople",
+   "n": 6,
+   "stretch": 1.29,
+   "pairs": 12,
+   "median_true_km": 1193,
+   "median_map_frac": 0.388,
+   "median_abs_brg_err": 8,
+   "median_disp_km": 884,
+   "mean_true_brg": 324,
+   "mean_map_brg": 332
+  },
+  "Holy Land": {
+   "region": "Holy Land",
+   "n": 15,
+   "stretch": 4.55,
+   "pairs": 71,
+   "median_true_km": 82,
+   "median_map_frac": 0.155,
+   "median_abs_brg_err": 50,
+   "median_disp_km": 776,
+   "mean_true_brg": 241,
+   "mean_map_brg": 141
+  },
+  "Syria and Anatolia": {
+   "region": "Syria and Anatolia",
+   "n": 8,
+   "stretch": 1.53,
+   "pairs": 26,
+   "median_true_km": 536,
+   "median_map_frac": 0.306,
+   "median_abs_brg_err": 28,
+   "median_disp_km": 1062,
+   "mean_true_brg": 358,
+   "mean_map_brg": 21
+  },
+  "Egypt and Sinai": {
+   "region": "Egypt and Sinai",
+   "n": 5,
+   "stretch": 1.86,
+   "pairs": 9,
+   "median_true_km": 508,
+   "median_map_frac": 0.713,
+   "median_abs_brg_err": 72,
+   "median_disp_km": 973,
+   "mean_true_brg": 226,
+   "mean_map_brg": 165
+  },
+  "North Africa": {
+   "region": "North Africa",
+   "n": 13,
+   "stretch": 1.22,
+   "pairs": 73,
+   "median_true_km": 1970,
+   "median_map_frac": 0.725,
+   "median_abs_brg_err": 69,
+   "median_disp_km": 1102,
+   "mean_true_brg": 282,
+   "mean_map_brg": 216
+  },
+  "Mesopotamia and Persia": {
+   "region": "Mesopotamia and Persia",
+   "n": 9,
+   "stretch": 1.64,
+   "pairs": 36,
+   "median_true_km": 1183,
+   "median_map_frac": 0.652,
+   "median_abs_brg_err": 12,
+   "median_disp_km": 534,
+   "mean_true_brg": 70,
+   "mean_map_brg": 79
+  },
+  "India and Central Asia": {
+   "region": "India and Central Asia",
+   "n": 10,
+   "stretch": 0.71,
+   "pairs": 43,
+   "median_true_km": 3594,
+   "median_map_frac": 0.904,
+   "median_abs_brg_err": 10,
+   "median_disp_km": 1434,
+   "mean_true_brg": 88,
+   "mean_map_brg": 97
+  }
+ },
+ "stretch_all_px_per_km": 0.5423,
+ "stretch_rank": [
+  "Holy Land",
+  "Egypt and Sinai",
+  "Mesopotamia and Persia",
+  "Syria and Anatolia",
+  "British Isles",
+  "Italy",
+  "Greece and Constantinople",
+  "France",
+  "North Africa",
+  "Spain",
+  "India and Central Asia"
+ ],
+ "britain": {
+  "names": 83,
+  "names_pct": 8.1,
+  "area_km2": 308385,
+  "afroeurasia_km2": 81089571,
+  "area_pct": 0.38,
+  "over_x": 21,
+  "located": 35,
+  "stretch": 1.5,
+  "medieval_pct": 91.57,
+  "names_per_100k": 26.9
+ },
+ "wiki": {
+  "revid": 1381220355,
+  "towns": 420,
+  "biblical_events": 15,
+  "animals": 33,
+  "people": 32,
+  "myth_scenes": 5,
+  "h_cm": 158,
+  "w_cm": 133,
+  "year": 1300,
+  "unesco": 2007,
+  "sale_year": 1988,
+  "library_year": 1996
+ },
+ "fit_photo": {
+  "rms_px": 43.8,
+  "max_px": 79.9,
+  "n": 9,
+  "rms_pct": 1.4
+ },
+ "located": {
+  "n": 164,
+  "real": 143,
+  "unique_real": 140,
+  "legend": 16,
+  "high": 119,
+  "medium": 45,
+  "radius_px": 1536,
+  "by_class": {
+   "Biblical": 23,
+   "Classical": 81,
+   "Medieval": 43,
+   "Legendary": 16
+  }
+ },
+ "meta": {
+  "page": "https://maps.tristanhotham.com/mappa-mundi/",
+  "repo": "https://github.com/Tristan-Hotham/mappa-mundi",
+  "doi": "10.5281/zenodo.23878612",
+  "blog": "https://blog.tristanhotham.com/2026/10/31/mappa-mundi/",
+  "slug": "mappa-mundi",
+  "book_ia": "https://archive.org/details/medivalgeograph00unkngoog",
+  "miller_ia": "https://archive.org/details/bub_gb_yJzVAAAAMAAJ",
+  "photo_url": "https://commons.wikimedia.org/wiki/File:Hereford_Mappa_Mundi_1300.jpg",
+  "miller_url": "https://commons.wikimedia.org/wiki/File:1896_facsimile_of_the_Hereford_Mappa_Mundi_by_Konrad_Miller.jpg"
+ },
+ "places": {
+  "London": {
+   "true_km": 3611,
+   "map_frac": 0.904,
+   "map_pct": 90,
+   "true_brg": 318,
+   "map_brg": 306,
+   "brg_err": -12,
+   "disp_km": 53
+  },
+  "Rome": {
+   "true_km": 2306,
+   "map_frac": 0.511,
+   "map_pct": 51,
+   "true_brg": 306,
+   "map_brg": 270,
+   "brg_err": -36,
+   "disp_km": 367
+  },
+  "Paris": {
+   "true_km": 3333,
+   "map_frac": 0.728,
+   "map_pct": 73,
+   "true_brg": 314,
+   "map_brg": 295,
+   "brg_err": -19,
+   "disp_km": 384
+  },
+  "Babylon": {
+   "true_km": 869,
+   "map_frac": 0.479,
+   "map_pct": 48,
+   "true_brg": 82,
+   "map_brg": 88,
+   "brg_err": 6,
+   "disp_km": 534
+  },
+  "Cairo": {
+   "true_km": 430,
+   "map_frac": 0.713,
+   "map_pct": 71,
+   "true_brg": 244,
+   "map_brg": 160,
+   "brg_err": -84,
+   "disp_km": 1212
+  },
+  "SriLanka": {
+   "true_km": 5398,
+   "map_frac": 1.004,
+   "map_pct": 100,
+   "true_brg": 109,
+   "map_brg": 126,
+   "brg_err": 17,
+   "disp_km": 3349
+  },
+  "Samarkand": {
+   "true_km": 2977,
+   "map_frac": 0.912,
+   "map_pct": 91,
+   "true_brg": 64,
+   "map_brg": 62,
+   "brg_err": -2,
+   "disp_km": 683
+  },
+  "Iceland": {
+   "true_km": 5159,
+   "map_frac": 1.011,
+   "map_pct": 101,
+   "true_brg": 332,
+   "map_brg": 344,
+   "brg_err": 12,
+   "disp_km": 1747
+  },
+  "Constantinople": {
+   "true_km": 1169,
+   "map_frac": 0.521,
+   "map_pct": 52,
+   "true_brg": 333,
+   "map_brg": 340,
+   "brg_err": 6,
+   "disp_km": 1290
+  },
+  "Patna": {
+   "true_km": 4874,
+   "map_frac": 0.915,
+   "map_pct": 92,
+   "true_brg": 85,
+   "map_brg": 114,
+   "brg_err": 29,
+   "disp_km": 3117
+  },
+  "Bethlehem": {
+   "true_km": 9,
+   "map_frac": 0.059,
+   "map_pct": 6,
+   "true_brg": 201,
+   "map_brg": 236,
+   "brg_err": 35,
+   "disp_km": 906
+  },
+  "Caen": {
+   "true_km": 3531,
+   "map_frac": 0.955,
+   "map_pct": 95,
+   "true_brg": 314,
+   "map_brg": 301,
+   "brg_err": -13,
+   "disp_km": 164
+  },
+  "Carthage": {
+   "true_km": 2349,
+   "map_frac": 0.613,
+   "map_pct": 61,
+   "true_brg": 291,
+   "map_brg": 236,
+   "brg_err": -54,
+   "disp_km": 875
+  },
+  "Santiago": {
+   "true_km": 4012,
+   "map_frac": 0.945,
+   "map_pct": 94,
+   "true_brg": 301,
+   "map_brg": 290,
+   "brg_err": -10,
+   "disp_km": 540
+  },
+  "Hereford": {
+   "true_km": 3799,
+   "map_frac": 0.986,
+   "map_pct": 99,
+   "true_brg": 318,
+   "map_brg": 306,
+   "brg_err": -12,
+   "disp_km": 16
+  },
+  "Alexandria": {
+   "true_km": 508,
+   "map_frac": 0.473,
+   "map_pct": 47,
+   "true_brg": 264,
+   "map_brg": 192,
+   "brg_err": -72,
+   "disp_km": 641
+  },
+  "ratio_london_bethlehem_km": 401,
+  "ratio_london_bethlehem_map": 15.3,
+  "srilanka_vs_london_km": 1.49
+ }
+}

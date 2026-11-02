@@ -1,0 +1,14 @@
+region,n,stretch,pairs,median_true_km,median_map_frac,median_abs_brg_err,median_disp_km,mean_true_brg,mean_map_brg
+British Isles,35,1.5,542,3801,0.955,8,249,320,312
+Iceland and Norway,3,,3,4498,0.986,12,1325,333,345
+France,15,1.27,102,3325,0.782,24,384,310,287
+Spain,8,0.9,25,3717,0.957,24,344,294,274
+Italy,10,1.35,42,2352,0.537,34,388,307,274
+Central Europe,3,,3,2720,0.822,3,804,324,331
+Greece and Constantinople,6,1.29,12,1193,0.388,8,884,324,332
+Holy Land,15,4.55,71,82,0.155,50,776,241,141
+Syria and Anatolia,8,1.53,26,536,0.306,28,1062,358,21
+Egypt and Sinai,5,1.86,9,508,0.713,72,973,226,165
+North Africa,13,1.22,73,1970,0.725,69,1102,282,216
+Mesopotamia and Persia,9,1.64,36,1183,0.652,12,534,70,79
+India and Central Asia,10,0.71,43,3594,0.904,10,1434,88,97

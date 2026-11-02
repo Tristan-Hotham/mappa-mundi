@@ -1,0 +1,147 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\newfontfamily\headfont{Inter}[UprightFont=*-ExtraBold,BoldFont=*-ExtraBold,Extension=.otf,Path=/usr/share/fonts/opentype/inter/]
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{graphicx,booktabs,float,caption,array,xcolor,longtable}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage[round]{natbib}
+\usepackage{setspace}
+\setstretch{1.05}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\titleformat{\section}{\headfont\Large}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\headfont\large}{\thesubsection}{0.8em}{}
+\captionsetup{font=small,labelfont=bf}
+\urlstyle{same}
+\hypersetup{pdftitle={The World According to the Hereford Mappa Mundi},pdfauthor={Tristan Hotham}}
+
+\begin{document}
+\begin{center}
+{\Large\bfseries The World According to the Hereford Mappa Mundi\par}
+\vspace{0.4em}
+{\large A medieval map of the world set against a modern one:\\the {{source.n|int}} names of Bevan and Phillott's index, identified, classified and measured\par}
+\vspace{1.2em}
+{\large Tristan Hotham\par}
+\vspace{0.3em}
+{\small Independent researcher\\
+ORCID: 0000-0003-4931-9349\\
+DOI: \href{https://doi.org/{{meta.doi}}}{https://doi.org/{{meta.doi}}}\par}
+\vspace{0.8em}
+2026
+\end{center}
+
+\begin{quote}
+\small
+\begin{center}\textbf{Abstract}\end{center}
+The Hereford Mappa Mundi (about 1300) is the largest surviving medieval map of the world. I use the index of names compiled by Bevan and Phillott in 1873 as an inventory of the map ({{source.n|int}} names), assign each to the four kinds of material those authors distinguished, and compare the positions of {{located.n|int}} inscriptions, located by eye on Konrad Miller's 1896 facsimile, with the real places the 1873 book identifies. Of the {{source.n_named|int}} names that are not part of the map's frame or natural history, {{classes.Classical.pct|int}}\% are classical, {{classes.Biblical.pct|int}}\% Biblical, {{classes.Medieval.pct|int}}\% medieval and {{classes.Legendary.pct|int}}\% legendary; every Biblical name is in Asia, and {{britain.medieval_pct|int}}\% of the names in the British Isles are medieval. Britain and Ireland, {{britain.area_pct|f1}}\% of the land of Africa, Asia and Europe, carry {{britain.names_pct|f1}}\% of the names. Measured from Jerusalem, the map's centre, directions are kept well once east is put at the top: the median error for the {{bearing.n|int}} located real places is {{bearing.median_abs_err|int}} degrees and {{bearing.within45_pct|int}}\% lie within 45 degrees. Distances are kept in order (rank correlation {{dist.spearman|f2}}) but compressed towards the rim: places a median {{dist.far_km|int}} km away are only {{dist.frac_ratio|f1}} times as far out on the map as places a median {{dist.near_km|int}} km away. Relative to the map as a whole, the Holy Land is drawn {{regions.Holy Land.stretch|f1}} times larger, the British Isles {{regions.British Isles.stretch|f1}} times, and India and Central Asia at {{regions.India and Central Asia.stretch|f2}} of the average. The map spends its space on Scripture and on home.
+
+\textbf{Keywords:} medieval cartography; mappa mundi; Hereford; historical geography; map distortion; Pleiades; open data
+\end{quote}
+
+\section{Introduction}
+The Hereford Mappa Mundi, drawn on a single sheet of vellum about {{wiki.h_cm|int}} by {{wiki.w_cm|int}} cm and kept in Hereford Cathedral, is the largest medieval map of the world known to survive \citep{wiki}. It follows the T and O pattern: the inhabited world is a disc ringed by ocean, with east at the top, Jerusalem at the centre, Asia filling the upper half and Europe and Africa the lower quarters, divided by the Mediterranean, the Don and the Nile. It is a religious and encyclopedic object rather than a guide for travellers, and it mixes Biblical history, classical geography, the marvels of the Alexander romance and a detailed picture of the mapmaker's own island.
+
+Bevan and Phillott's \textit{Mediaeval Geography} \citep{bevan} went over the map name by name, region by region, identifying each name where they could and tracing it to its source, and ended with an index of names. That index, and the scanned text of the book, are the core of this study. I ask four questions. How many names does the map carry, and in which parts of the world? What share is Biblical, classical, medieval and legendary? Which real places did it include? And how distorted is it, in direction, in distance and in the space it gives to each region? The paper accompanies an interactive comparison of the map and a modern map (\url{{{meta.page}}}).
+
+\section{Data}
+\textbf{The book.} The Internet Archive's scan of \citet{bevan} (public domain) provides the text, divided here into the book's 174 pages using the running heads. The book's chapters follow the map: the frame and the ocean (chapter I), Asia (II to IV), Africa (V), the Mediterranean and Black Sea with their islands (VI), Europe (VII and VIII) and the British Isles (IX). The map's own words are printed in black-letter type, which the OCR renders as nonsense; the commentary, identifications and citations are in roman type and read cleanly. Miller's \textit{Die Herefordkarte} \citep{miller1903} was used for cross-checks.
+
+\textbf{The images.} Konrad Miller's 1896 facsimile \citep{miller1896}, a hand-drawn copy with clear labels (3,840 by 4,708 pixels as used), and a photograph of the original (Wikimedia Commons, an enlargement of a 600 pixel image, so its labels cannot be read). Both are in the public domain.
+
+\textbf{Gazetteers.} Pleiades, a gazetteer of ancient places \citep{pleiades}, version {{source.pleiades_version|raw}}, and Natural Earth countries and towns \citep{naturalearth}. Facts on the map's size, date and contents are from English Wikipedia \citep{wiki}.
+
+\section{Methods}
+\subsection{Inventory}
+The book's index, ``Index of the names of places and objects [on the] Hereford Mappa Mundi'', has {{source.n|int}} entries once lines broken by the scan are rejoined, each with a type where given (river, island, mountain, sea, promontory, gulf) and the page or pages that discuss it. I corrected OCR errors in the index names (rn read as m, N as K, and so on) and in ten page numbers, checking each against the text. The part of the world is that of the chapter the first page falls in. The index records names, not pictures: a town with a label is one entry, an unlabelled picture is none, and some legends are indexed under their key word.
+
+\subsection{Classes}
+Bevan and Phillott sort the map's materials into Biblical, classical, legendary and contemporaneous (medieval) \citep[Introduction, section 11]{bevan}. I applied that scheme with a fixed rule, in order. (1) The winds, quarters and continent labels of the frame and the real animals and plants ({{source.n_frame|int}} names) are left out. (2) Legendary: monstrous peoples, fabulous beasts, and the places and objects of legend and myth, from a list drawn up name by name. (3) Biblical: every name in the book's sections on the rivers of Paradise (pp. 25 to 26), Palestine and Arabia (pp. 77 to 81) and the Exodus in Egypt (pp. 85 to 86), less the Greek and Roman names there, and a few Biblical names elsewhere (Babel, Babylon, Ur, Nineveh, Noah's Ark, Enos, Ophir). (4) Medieval: in the British Isles every name except five from Roman writers; in the rest of Europe a list of post-Roman places, regions and peoples; in Asia and Africa only six names of medieval origin (Samarkand, the Turks, the monasteries of St Antony, St Zosimas and Mahun). (5) Classical: everything else. The lists are in the published code.
+
+\subsection{Real places}
+For each inscription I located on the facsimile (below) I read the book's identification and recorded it with the page and the book's words, and gave the modern place's coordinates, checked against Natural Earth. For the other names I looked for the same name in Pleiades (attested and romanised names and place titles), allowing simple medieval spellings (y for i, f for ph, ablative endings), within a box for the part of the world the book discusses the name under; approximate spellings were allowed with a similarity of at least 0.86 and the same first two letters. Every match was checked by hand against the part of the world the book puts the name in and the place it points to; {{placed.rejected|int}} that pointed to another place of the same or a similar name were rejected. In all {{placed.n|int}} of the {{placed.n_real|int}} names that are neither frame nor legend ({{placed.pct|int}}\%) have a real position: {{placed.book|int}} from the book and {{placed.pleiades|int}} from Pleiades ({{placed.pleiades_rough|int}} of them with rough Pleiades locations). This is a lower bound on what can be identified.
+
+\subsection{Positions on the map}
+No coordinate dataset exists for the Hereford map, so I located {{located.n|int}} well-known and legible inscriptions by eye on the facsimile, at the town picture or, where there is none, at the middle of the label, recording my confidence ({{located.high|int}} read clearly, {{located.medium|int}} with some doubt because the label is worn, crowded or ambiguous). Of these, {{located.legend|int}} are legendary and {{located.real|int}} are identified with a real place ({{located.unique_real|int}} distinct places once Babel and Babylon, and Santiago and its shrine, are merged). Positions were carried to the photograph by an affine fit on {{fit_photo.n|int}} features clear on both images (Jerusalem, Paradise, the Pillars of Hercules, the Tower of Babel, Delos, Crete, Charybdis, the Well of the Sun and Lake Salinarum), with a root mean square error of {{fit_photo.rms_px|int}} pixels, about {{fit_photo.rms_pct|f1}}\% of the map's width.
+
+\subsection{Distortion}
+For each located real place I measured the true great-circle distance and initial bearing from Jerusalem (31.78 N, 35.23 E) and the distance and bearing on the facsimile from the centre of the walled circle of Jerusalem, reading east as up. Map distance is expressed as a share of the map radius, the mean distance from Jerusalem to Paradise and to the Pillars of Hercules ({{located.radius_px|int}} pixels). To summarise the scale of each region, I took all pairs of located places in the region at least 100 km apart and computed the median of map distance over true distance, divided by the same median over all such pairs on the map; regions with fewer than five located places are not scored. Finally, I fitted the similarity transform (rotation, uniform scale and shift, least squares) that best lays the located map positions on an azimuthal equidistant projection centred on Jerusalem, and measured each place's displacement from where that fit puts it.
+
+\section{Results}
+\subsection{What is on the map}
+Table~\ref{tab:parts} and Figure~\ref{fig:parts} show the inventory. Asia has {{parts.Asia.n|int}} names, Europe {{parts.Europe.n|int}}, Africa {{parts.Africa.n|int}}, the seas and islands {{parts.Seas and islands.n|int}} and the British Isles {{parts.British Isles.n|int}}. {{types.place or people|int}} are settlements, regions or peoples, {{types.river|int}} rivers, {{types.island|int}} islands and {{types.mountain|int}} mountains. For comparison, Wikipedia counts about {{wiki.towns|int}} towns, {{wiki.biblical_events|int}} Biblical events, {{wiki.animals|int}} animals and plants, {{wiki.people|int}} people and {{wiki.myth_scenes|int}} scenes from classical mythology \citep{wiki}.
+
+{{TABLE_PARTS}}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_parts.png}
+\caption{Names in Bevan and Phillott's index by part of the map and class.}\label{fig:parts}\end{figure}
+
+By the rule above, {{classes.Classical.n|int}} names ({{classes.Classical.pct|int}}\%) are classical, {{classes.Biblical.n|int}} ({{classes.Biblical.pct|int}}\%) Biblical, {{classes.Medieval.n|int}} ({{classes.Medieval.pct|int}}\%) medieval and {{classes.Legendary.n|int}} ({{classes.Legendary.pct|int}}\%) legendary. All {{part_class.Asia.Biblical|int}} Biblical names are in Asia, as are {{part_class.Asia.Legendary|int}} of the legendary ones. Africa's names are {{part_class.Africa.Classical_pct|int}}\% classical, Europe's {{part_class.Europe.Classical_pct|int}}\%. The British Isles are the exception, {{britain.medieval_pct|int}}\% medieval, consistent with Bevan and Phillott's remark that the mapmaker's contemporary knowledge is ``almost entirely confined to Europe'' and with the detail of the British section.
+
+\subsection{Real places and their positions}
+Figure~\ref{fig:maps} shows the located inscriptions on the facsimile and the identified places on a modern map; Appendix Table~\ref{tab:located} lists them.
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_maps.png}
+\caption{Located inscriptions on Miller's facsimile (left, east at the top) and the places the 1873 book identifies, on a modern map (right). Colours are classes.}\label{fig:maps}\end{figure}
+
+\subsection{Direction}
+Bearings from Jerusalem are kept well (Figure~\ref{fig:bearing}). The median absolute error is {{bearing.median_abs_err|int}} degrees, {{bearing.within45_pct|int}}\% of places are within 45 degrees and all are within 90. The errors are not random: North Africa ({{regions.North Africa.median_abs_brg_err|int}} degrees) and Egypt ({{regions.Egypt and Sinai.median_abs_brg_err|int}}) are swung southward, because the Mediterranean is drawn as a straight channel from the Pillars of Hercules at the bottom of the map to the Holy Land at its centre, while the British Isles ({{regions.British Isles.median_abs_brg_err|int}}), Mesopotamia and Persia ({{regions.Mesopotamia and Persia.median_abs_brg_err|int}}) and India and Central Asia ({{regions.India and Central Asia.median_abs_brg_err|int}}) point close to the right way. The best-fitting rotation turns the map's top to a bearing of {{fit.up_bearing|int}} degrees, a little south of due east, and explains {{fit.r2|f2}} of the variance of the true positions; the median displacement from the fitted position is {{fit.median_disp_km|int}} km (Figure~\ref{fig:arrows}).
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_bearing.png}
+\caption{Bearing from Jerusalem on the map (east up) against the true bearing, by region. The dashed line is perfect agreement.}\label{fig:bearing}\end{figure}
+
+\subsection{Distance}
+Distances keep their order (Spearman's rank correlation {{dist.spearman|f2}}) but not their scale (Figure~\ref{fig:distance}). Places within 500 km of Jerusalem (median {{dist.near_km|int}} km) sit a median {{dist.near_frac_pct|int}}\% of the way to the rim; places 3,000 km or more away (median {{dist.far_km|int}} km) sit at {{dist.far_frac_pct|int}}\%: {{dist.km_ratio|f1}} times as far in reality, {{dist.frac_ratio|f1}} times on the map. Bethlehem, {{places.Bethlehem.true_km|int}} km from Jerusalem, is {{places.Bethlehem.map_pct|int}}\% of the way out; London, {{places.ratio_london_bethlehem_km|int}} times farther, is at {{places.London.map_pct|int}}\%; Sri Lanka, {{places.SriLanka.true_km|int}} km away, sits on the rim.
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_distance.png}
+\caption{Distance from Jerusalem on the map, as a share of the way to the rim, against true distance (log scale).}\label{fig:distance}\end{figure}
+
+\subsection{Scale by region}
+Table~\ref{tab:regions} and Figure~\ref{fig:stretch} give the relative scale of each region. The Holy Land is drawn at {{regions.Holy Land.stretch|f1}} times the map's average, Egypt and Sinai at {{regions.Egypt and Sinai.stretch|f1}}, Mesopotamia and Persia at {{regions.Mesopotamia and Persia.stretch|f1}}, Syria and Anatolia at {{regions.Syria and Anatolia.stretch|f1}} and the British Isles at {{regions.British Isles.stretch|f1}}; Spain at {{regions.Spain.stretch|f2}} and India and Central Asia at {{regions.India and Central Asia.stretch|f2}}. Iceland, the Faroes and Norway, too few to score, are squeezed into the rim.
+
+{{TABLE_REGIONS}}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_stretch.png}
+\caption{Scale of each region relative to the map as a whole (median ratio of map to true distance over pairs of located places).}\label{fig:stretch}\end{figure}
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_arrows.png}
+\caption{Displacement of each located place from where the best-fitting rotation and scaling of the map would put it.}\label{fig:arrows}\end{figure}
+
+\subsection{The British Isles}
+The British Isles have {{britain.names|int}} names, {{britain.names_pct|f1}}\% of the index, against {{britain.area_pct|f1}}\% of the land of Africa, Asia and Europe in Natural Earth's outlines, about {{britain.over_x|int}} times their share. Bevan and Phillott judged them ``drawn on a scale out of all proportion to the other parts of the map'' and the rivers of the Humber depicted with ``a degree of accuracy which implies personal acquaintance''; they also noted gross errors, above all Caen, transferred ``by a strange blunder'' from Normandy to Devon \citep[pp. 163 to 170]{bevan}. Figure~\ref{fig:britain} compares the section with a modern map.
+
+\begin{figure}[tbp]\centering\includegraphics[width=\textwidth]{f_britain.png}
+\caption{Britain and Ireland on the facsimile (east at the top) and today.}\label{fig:britain}\end{figure}
+
+\section{Limitations}
+First, the inventory is Bevan and Phillott's index, which records names, not pictures, and is not a complete modern edition; Westrem's edition and the Virtual Mappa project transcribe every inscription. Second, the classes rest on judgements made name by name, under a stated rule; others would draw some boundaries differently, especially between classical and medieval names in Europe. Third, the 1873 identifications are the Victorians' and some have been revised since; Pleiades matches by name are a lower bound on what can be identified. Fourth, positions were located by eye on a nineteenth century copy; the located set favours legible, well-known places, so the distortion figures describe the map's real towns rather than its whole surface. Fifth, the photograph is low resolution and the affine fit to it is approximate.
+
+\section{Conclusion}
+Measured against a modern map, the Hereford Mappa Mundi is not a failed attempt at geography but a different kind of map. Its directions from Jerusalem are mostly right once east is at the top, and its distances keep their order; what it gives up is scale, spending its space on the Holy Land, Egypt and Mesopotamia, where the Bible's history happened, and on the British Isles, where its makers lived, and pressing the rest of the world against the encircling ocean. Most of its names are inherited from late Roman books; the medieval present appears mainly at home.
+
+\section*{Data and code availability}
+The interactive comparison is at \url{{{meta.page}}}. Data and code are at \url{{{meta.repo}}} and archived with this paper at \url{https://doi.org/{{meta.doi}}}. Derived data are released under CC BY 4.0 and code under the MIT licence. The book and the map images are in the public domain; Pleiades data are CC BY 3.0.
+
+\section*{AI statement}
+I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.
+
+\begin{thebibliography}{9}
+\bibitem[Bevan and Phillott(1873)]{bevan} Bevan, W. L. and Phillott, H. W. (1873) \textit{Mediaeval Geography: an Essay in Illustration of the Hereford Mappa Mundi}. London: E. Stanford. Internet Archive scan, public domain. \url{https://archive.org/details/medivalgeograph00unkngoog}
+\bibitem[Miller(1896)]{miller1896} Miller, K. (1896) \textit{Richardi de Haldingham seu de Bello Mappamundi}, facsimile. Stuttgart: J. Roth. Wikimedia Commons, public domain. \url{https://commons.wikimedia.org/wiki/File:1896_facsimile_of_the_Hereford_Mappa_Mundi_by_Konrad_Miller.jpg}
+\bibitem[Miller(1903)]{miller1903} Miller, K. (1903) \textit{Die Herefordkarte}. Stuttgart: J. Roth. Internet Archive scan, public domain. \url{https://archive.org/details/bub_gb_yJzVAAAAMAAJ}
+\bibitem[Natural Earth(2026)]{naturalearth} Natural Earth (2026) Admin 0 countries and populated places, 1:50m and 1:10m. Public domain. \url{https://www.naturalearthdata.com/}
+\bibitem[Pleiades(2026)]{pleiades} Bagnall, R. et al., eds. (2026) Pleiades: a gazetteer of past places, version {{source.pleiades_version|raw}}. CC BY 3.0. \url{https://pleiades.stoa.org/}
+\bibitem[Wikipedia(2026)]{wiki} Wikipedia contributors (2026) Hereford Mappa Mundi (revision {{wiki.revid|raw}}). CC BY-SA 4.0. \url{https://en.wikipedia.org/wiki/Hereford_Mappa_Mundi}
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{The located inscriptions}
+{{TABLE_LOCATED}}
+\end{document}
