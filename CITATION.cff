@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "The World According to the Hereford Mappa Mundi: A Medieval Map of the World Set Against a Modern One"
+type: dataset
+authors:
+  - family-names: Hotham
+    given-names: Tristan
+    orcid: "https://orcid.org/0000-0003-4931-9349"
+    affiliation: "Independent researcher"
+doi: "10.5281/zenodo.23878612"
+url: "https://maps.tristanhotham.com/mappa-mundi/"
+repository-code: "https://github.com/Tristan-Hotham/mappa-mundi"
+license: CC-BY-4.0
+keywords:
+  - "medieval cartography"
+  - "mappa mundi"
+  - "Hereford"
+  - "historical geography"
+  - "map distortion"
+  - "Jerusalem"
+  - "Pleiades"
+  - "open data"
+  - "maps"
